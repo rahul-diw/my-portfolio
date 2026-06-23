@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { portfolioData } from "../data/portfolioData";
-
+import { FaGithub } from "react-icons/fa";
 
 
 export default function Navbar() {
@@ -85,7 +85,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-300/90 shadow-[0_4px_20px_rgba(0,0,0,0.05)] z-50 py-3 transition-all duration-300 font-jakarta">
-      <div className="max-w-[1500px] mx-auto flex items-center justify-between px-6 sm:px-8 md:px-10 lg:px-0 w-full">
+      <div className="max-w-[1280px] mx-auto flex items-center justify-between px-6 sm:px-8 md:px-10 lg:px-0 w-full">
         
         {/* LEFT SIDE: Logo / Name */}
         <div className="flex-shrink-0">
@@ -138,13 +138,7 @@ export default function Navbar() {
     rel="noreferrer"
     className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-[14px] border border-transparent hover:border-gray-300 bg-transparent transition-all duration-300 group"
   >
-    <svg
-      className="w-5 h-5 text-black transition-transform duration-300 group-hover:scale-110"
-      fill="currentColor"
-      viewBox="0 0 16 16"
-    >
-      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59..." />
-    </svg>
+   <FaGithub className="w-5 h-5 text-black transition-transform duration-300 group-hover:scale-110" />
   </a>
 
   {/* Mobile Hamburger */}
@@ -152,19 +146,14 @@ export default function Navbar() {
     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
     className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200"
   >
-    <svg
-      className="w-5 h-5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M4 6h16M4 12h16M4 18h16"
-      />
-    </svg>
+<a
+  href={personalInfo.github}
+  target="_blank"
+  rel="noreferrer"
+  className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-[14px] border border-gray-200 hover:border-gray-300 transition-all duration-300"
+>
+  GitHub
+</a>
   </button>
 
 </div>
