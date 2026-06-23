@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { portfolioData } from "../data/portfolioData";
 
-const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
 export default function Navbar() {
+
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { personalInfo } = portfolioData;
   
   // Track karne ke liye ki abhi screen par kaun sa section active hai
