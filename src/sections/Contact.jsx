@@ -17,7 +17,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden w-full py-30 bg-[#fafafa] flex flex-col items-center px-4 sm:px-8 md:px-16 font-sans">
+    <section id="contact" className="relative overflow-hidden w-full py-20 md:py-30 bg-[#fafafa] flex flex-col items-center px-4 sm:px-8 md:px-16 font-sans">
       {/* Top Left Edge Effect */}
       <div className="absolute -top-44 -left-44 w-[550px] h-[550px] rounded-full bg-gray-400/25 blur-[150px] pointer-events-none" />
 
@@ -27,7 +27,7 @@ export default function ContactSection() {
       {/* BIGGER WRAPPER - MAX-W-7XL FOR THAT LARGE/WIDE LOOK IN YOUR PIC */}
       <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-13">
         {/* LEFT CARD: SEND A MAIL (INCREASED PADDING & SPACING) */}
-        <div className="bg-[#fcfcfc] border border-gray-200/80 rounded-[32px] p-10 md:p-12 flex flex-col justify-between text-left transition-all duration-500 ease-out hover:-translate-y-3 shadow-[0_2px_4px_rgba(0,0,0,0.01)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.06)]">
+        <div className="bg-[#fcfcfc] border border-gray-200/80 rounded-[32px] p-6 sm:p-8 md:p-12 flex flex-col justify-between text-left transition-all duration-500 ease-out hover:-translate-y-3 shadow-[0_2px_4px_rgba(0,0,0,0.01)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.06)]">
           <div>
             {/* Bigger Mail Icon Header */}
             <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white border border-gray-200/70 shadow-2xs mb-8">
@@ -170,7 +170,7 @@ export default function ContactSection() {
             </div>
 
             {/* Massive Header Text */}
-            <h3 className="text-[36px] md:text-[44px] font-bold text-gray-900 tracking-tight mb-5 leading-tight">
+            <h3 className="text-[28px] sm:text-[36px] md:text-[44px] font-bold text-gray-900 tracking-tight mb-5 leading-tight">
               Let's Work Together
             </h3>
 
@@ -183,7 +183,7 @@ export default function ContactSection() {
 
             {/* Bigger Stats Counter */}
             <div className="flex flex-col mb-8">
-              <span className="text-[42px] font-bold text-gray-900 leading-none">
+              <span className="text-[34px] sm:text-[42px] font-bold text-gray-900 leading-none">
                 11+
               </span>
               <span className="text-[14px] font-semibold tracking-wider text-gray-500 mt-1.5">

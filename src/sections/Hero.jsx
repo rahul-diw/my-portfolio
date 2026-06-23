@@ -14,16 +14,16 @@ export default function Hero() {
     // Max width increased to 1440px and vertical padding increased to pt-40 pb-20 for a grander size feel
     <section
       id="home"
-     className="relative min-h-[115vh] pt-50 pb-20 flex flex-col justify-between items-center px-12 max-w-[1440px] mx-auto overflow-hidden"
+     className="relative min-h-screen md:min-h-[115vh] pt-28 md:pt-50 pb-20 flex flex-col justify-between items-center px-5 md:px-12 max-w-[1440px] mx-auto overflow-hidden"
     >
       {/* Grid split adjusted to 6 & 6 for maximum horizontal span and layout size expansion */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-24 items-center my-auto">
+      <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center my-auto">
         {/* Left Content Side */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-         className="md:col-span-6 space-y-7 text-left -translate-y-12"
+        className="md:col-span-6 space-y-7 text-left md:-translate-y-12"
         >
           {/* 1. WELCOME BADGE - Dark Gray Slide from Left on Hover */}
           <div
@@ -40,12 +40,12 @@ export default function Hero() {
           {/* Name Panel - Colors swapped perfectly */}
           <div className="space-y-2">
             {/* "Hi, I'm" now gets the bold dark look */}
-            <h1 className="text-6xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-800">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-800">
               Hi, I'm
             </h1>
 
             {/* "Rahul Diwakar" now gets the stylish soft gray look */}
-            <h1 className="text-6xl sm:text-7xl md:text-6xl font-bold tracking-tight text-gray-600 relative inline-block group cursor-pointer pb-1">
+            <h1 className="text-5xl sm:text-6xl md:text-6xl font-bold tracking-tight text-gray-600 relative inline-block group cursor-pointer pb-1">
               {personalInfo.name}
 
               {/* Bottom underline accent color adjusted to match the gray look smoothly */}
@@ -55,20 +55,20 @@ export default function Hero() {
 
           {/* Subheading Tagline */}
           <div className="relative py-1 inline-block">
-            <p className="text-xl font-normal text-gray-500 tracking-tight border-l-4 border-gray-900 pl-5 leading-snug">
+            <p className="text-base md:text-xl font-normal text-gray-500 tracking-tight border-l-4 border-gray-900 pl-5 leading-snug">
               Building scalable web apps & exploring full-stack development
             </p>
           </div>
 
           {/* Summary Text */}
-          <p className="text-gray-500 text-lg leading-relaxed max-w-xl text-justify font-medium">
+          <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-xl text-justify font-medium">
             I'm an MCA graduate passionate about building modern, scalable web
             applications. I enjoy converting ideas into polished products with
             clean interfaces and seamless user experiences.
           </p>
 
           {/* BUTTONS WITH SLIDING HOVER EFFECTS */}
-          <div className="flex flex-wrap items-center gap-5 pt-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 pt-3">
             {/* 2. VIEW MY WORK BUTTON - White Slide from Left on Hover (Opposite Effect) */}
             <a
               href="#projects"
@@ -78,7 +78,7 @@ export default function Hero() {
               <span className="absolute inset-0 w-full h-full bg-white scale-x-0 origin-left transition-transform duration-600 ease-out group-hover:scale-x-100 z-0"></span>
 
               {/* Real Text Content on top layer */}
-              <span className="relative z-10 flex items-center gap-3">
+              <span className="w-full sm:w-auto relative z-10 flex items-center gap-3">
                 View My Work
                 <svg
                   className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-600"
@@ -106,7 +106,7 @@ export default function Hero() {
               <span className="absolute inset-0 w-full h-full bg-[#333333] scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></span>
 
               {/* Real Text Content on top layer */}
-              <span className="relative z-10 flex items-center gap-3">
+              <span className="w-full sm:w-auto relative z-10 flex items-center gap-3">
                 Let's Connect
                 <svg
                   className="w-5 h-5 text-gray-900 group-hover:text-white transition-colors duration-300"
@@ -173,7 +173,7 @@ export default function Hero() {
 
             {/* Perspective Wrapper - Width and Height bumped to w-80 h-80 */}
             <div
-              className="w-72 h-72 group/card cursor-pointer"
+              className="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 group/card cursor-pointer"
               style={{ perspective: "1000px" }}
             >
 
@@ -214,7 +214,7 @@ export default function Hero() {
           </div>
 
           {/* CODE TERMINAL BLOCK - Max stretched to fill its 6-column boundary beautifully */}
-          <div className="w-full max-w-2xl bg-[#FBFBFB] text-[#333333] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.04)] overflow-hidden font-mono text-[14px] border border-gray-200/60 transform hover:-translate-y-1 transition-all duration-300">
+          <div className="w-full max-w-2xl bg-[#FBFBFB] text-[#333333] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.04)] overflow-hidden font-mono text-[11px] sm:text-[13px] md:text-[14px] border border-gray-200/60 transform hover:-translate-y-1 transition-all duration-300">
           
             {/* Top Window Bar */}
             <div className="bg-[#F3F3F3] px-6 py-4 flex items-center gap-2 border-b border-gray-200/80">
@@ -227,7 +227,7 @@ export default function Hero() {
             </div>
 
             {/* Code Body */}
-            <div className="p-8 whitespace-pre overflow-hidden text-left leading-loose select-none bg-[#FAFAFA]">
+            <div className="p-4 sm:p-6 md:p-8 whitespace-pre overflow-hidden text-left leading-loose select-none bg-[#FAFAFA]">
               <code className="block">
                 <span className="text-blue-600 font-bold">const</span>{" "}
                 <span className="text-purple-600">developer</span> = &#123;
@@ -285,7 +285,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="w-full flex justify-center pt-6 mt-20"
+        className="w-full flex justify-center pt-6 mt-10 md:mt-20"
       >
         <a
           href="#about"

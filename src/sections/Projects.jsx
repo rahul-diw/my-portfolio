@@ -100,12 +100,12 @@ const movieImages = [
 
       {/* 1. HEADERS */}
       <div className="text-center mb-12">
-        <h2 className="text-[38px] font-bold text-gray-900 tracking-tight mb-1">Projects</h2>
+        <h2 className="text-[30px] md:text-[38px] font-bold text-gray-900 tracking-tight mb-1">Projects</h2>
         <p className="text-[17px] text-gray-600 font-normal">Some things I've built</p>
       </div>
 
       {/* 2. CATEGORIES */}
-      <div className="flex items-center gap-3 mb-12">
+      <div className="flex flex-wrap justify-center items-center gap-3 mb-12">
         {tabs.map((tab) => (
               <button
                 key={tab}
@@ -166,7 +166,7 @@ const movieImages = [
               <span className="inline-block text-[10px] font-semibold tracking-wider text-gray-500 border border-gray-300 bg-white px-2.5 py-0.5 rounded-md mb-3 shadow-2xs transition-all duration-300 hover:border-gray-500 hover:text-gray-700">
                 FEATURED PROJECT
               </span>
-              <h3 className="text-[24px] font-bold text-[#111] tracking-tight mb-3 flex items-center gap-2">
+              <h3 className="text-[20px] md:text-[24px] font-bold text-[#111] tracking-tight mb-3 flex items-center gap-2">
                 <span>🎯</span> Smart Task Administration System
               </h3>
               <p className="text-[14px] text-gray-600 font-normal leading-relaxed mb-4 max-w-xl">

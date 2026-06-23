@@ -106,7 +106,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden w-full min-h-screen bg-[#FCFCFC] py-24 px-6 sm:px-12 md:px-16 lg:px-24 flex items-center justify-center font-sans selection:bg-gray-100"
+      className="relative overflow-hidden w-full min-h-screen bg-[#FCFCFC] py-16 md:py-24 px-4 sm:px-8 md:px-16 lg:px-24 flex items-center justify-center font-sans selection:bg-gray-100"
     >
       {/* Top Left Edge Effect */}
       <div className="absolute -top-44 -left-44 w-[550px] h-[550px] rounded-full bg-gray-400/25 blur-[150px] pointer-events-none" />
@@ -117,9 +117,9 @@ export default function About() {
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* LEFT COLUMN: PROFILE CARD */}
         <div className="lg:col-span-5 w-full flex justify-center lg:justify-start sticky top-28 transform hover:-translate-y-2 transition-all duration-400 ">
-          <div className="w-[450px] bg-[#FBFBFB] border border-gray-200 rounded-[32px] p-6 flex flex-col items-center shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08),0_0_50px_-10px_rgba(0,0,0,0.02)]">
+          <div className="w-full max-w-[450px] bg-[#FBFBFB] border border-gray-200 rounded-[32px] p-6 flex flex-col items-center shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08),0_0_50px_-10px_rgba(0,0,0,0.02)]">
             {/* Image Wrapper */}
-            <div className="w-full h-[400px] rounded-[24px] overflow-hidden bg-white relative transform hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08),0_0_50px_-10px_rgba(0,0,0,0.02)]">
+            <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] rounded-[24px] overflow-hidden bg-white relative transform hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08),0_0_50px_-10px_rgba(0,0,0,0.02)]">
               <img
                 src={rahulPic}
                 alt={personalInfo.name}
@@ -148,7 +148,7 @@ export default function About() {
               {/* 1. Education */}
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-4 h-4 text-gray-400 stroke-[1.5] shrink-0"
+                  className="w-4 h-4 text-gray-700 stroke-[1.5] shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -165,7 +165,7 @@ export default function About() {
               {/* 2. Location */}
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-4 h-4 text-gray-400 stroke-[1.5] shrink-0"
+                  className="w-4 h-4 text-gray-700 stroke-[1.5] shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -187,7 +187,7 @@ export default function About() {
               {/* 3. Email */}
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-4 h-4 text-gray-400 stroke-[1.5] shrink-0"
+                  className="w-4 h-4 text-gray-700 stroke-[1.5] shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -209,7 +209,7 @@ export default function About() {
               {/* 4. Availability */}
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-4 h-4 text-gray-400 stroke-[1.5] shrink-0"
+                  className="w-4 h-4 text-gray-700 stroke-[1.5] shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -232,7 +232,7 @@ export default function About() {
             {stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="group bg-[#f4f4f5] border border-gray-300 rounded-[20px] p-5 flex flex-col items-center justify-center text-center shadow-[0_4px_24px_rgba(0,0,0,0.01)] transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-gray-400 hover:bg-white cursor-pointer"
+                className="group bg-[#f4f4f5] border border-gray-300 rounded-[20px] p-4 sm:p-5 flex flex-col items-center justify-center text-center shadow-[0_4px_24px_rgba(0,0,0,0.01)] transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-gray-400 hover:bg-white cursor-pointer"
               >
                 <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mb-3 border border-gray-300/70 transition-all duration-300 group-hover:bg-white">
                   {getIcon(stat.label)}
@@ -249,7 +249,7 @@ export default function About() {
 
           {/* ABOUT ME */}
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold tracking-tight text-gray-950">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-950">
               About Me
             </h2>
             <div className="text-[15px] leading-relaxed text-gray-500 font-normal flex flex-col gap-5">
@@ -300,7 +300,7 @@ export default function About() {
                   return (
                     <div
                       key={idx}
-                      className="group w-full bg-[#f6f6f7] border border-gray-200 rounded-[18px] p-6 pl-8 shadow-[0_2px_10px_rgba(0,0,0,0.005)] relative flex flex-col items-start gap-2 transition-all duration-300 hover:border-gray-300 hover:bg-white hover:-translate-y-0.5 cursor-pointer"
+                      className="group w-full bg-[#f6f6f7] border border-gray-200 rounded-[18px] p-5 md:p-6 pl-7 md:pl-8 shadow-[0_2px_10px_rgba(0,0,0,0.005)] relative flex flex-col items-start gap-2 transition-all duration-300 hover:border-gray-300 hover:bg-white hover:-translate-y-0.5 cursor-pointer"
                     >
                       {/* Left Dot - Hover par black ho jayega */}
                       <span className="absolute left-4 top-[28px] w-1.5 h-1.5 rounded-full bg-gray-400 transition-all duration-300 ease-out group-hover:scale-150 group-hover:bg-gray-950" />
@@ -325,7 +325,7 @@ export default function About() {
           )}
 
           {/* --- PROJECTS CONTAINER KE THEEK NICHE ISS LAYOUT KO PASTE KAREIN --- */}
-          <div className="w-full mt-12 sm:mt-12 text-left px-4 sm:px-6">
+          <div className="w-full mt-12 sm:mt-12 text-left px-0 sm:px-4">
             {/* Section Heading with Icon Code */}
             <div className="flex items-center gap-2 mb-6 text-gray-900">
               <svg
@@ -646,7 +646,7 @@ export default function About() {
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
                           Present
                         </span>
-                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full whitespace-nowrap">
+                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full">
                           Master of Computer Applications
                         </h3>
                         <p className="text-[12px] text-gray-500 font-normal leading-loose mt-0.5">
@@ -688,7 +688,7 @@ export default function About() {
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
                           2018 - 2022
                         </span>
-                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full whitespace-nowrap">
+                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full">
                           Bachelor of Computer Applications
                         </h3>
                         <p className="text-[12px] text-gray-500 font-normal leading-loose mt-0.5">
@@ -824,7 +824,7 @@ export default function About() {
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
                           2023
                         </span>
-                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full whitespace-nowrap">
+                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full">
                           Started Coding Journey
                         </h3>
                         <p className="text-[12px] text-gray-500 font-normal leading-loose mt-0.5">
@@ -862,7 +862,7 @@ export default function About() {
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
                           2020
                         </span>
-                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full whitespace-nowrap">
+                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full">
                           Competitive Growth
                         </h3>
                         <p className="text-[12px] text-gray-500 font-normal leading-loose mt-0.5">
@@ -900,7 +900,7 @@ export default function About() {
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
                           2025 - 2026
                         </span>
-                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full whitespace-nowrap">
+                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full">
                           First Full-Stack Build
                         </h3>
                         <p className="text-[12px] text-gray-500 font-normal leading-loose mt-0.5">
@@ -938,7 +938,7 @@ export default function About() {
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
                           2026
                         </span>
-                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full whitespace-nowrap">
+                        <h3 className="font-bold text-[14px] sm:text-[15px] text-gray-900 tracking-tight block w-full">
                           Current Mission
                         </h3>
                         <p className="text-[12px] text-gray-500 font-normal leading-loose mt-0.5">
