@@ -23,11 +23,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-        className="md:col-span-6 space-y-7 text-left md:-translate-y-12"
+        className="order-2 md:order-1 md:col-span-6 space-y-7 text-center md:text-left md:-translate-y-12"
         >
           {/* 1. WELCOME BADGE - Dark Gray Slide from Left on Hover */}
+
+          <div className="flex justify-center md:justify-start">
           <div
-            className="group relative -top-10 inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-500 rounded-full text-xs font-semibold tracking-wide border border-gray-200/60 shadow-sm cursor-pointer overflow-hidden transition-colors duration-300 hover:text-white relative -top-8"
+            className="group relative -top-8 inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-500 rounded-full text-xs font-semibold tracking-wide border border-gray-200/60 shadow-sm cursor-pointer overflow-hidden transition-colors duration-300 hover:text-white relative -top-8"
           >
             {/* Sliding Background Cover */}
             <span className="absolute inset-0 w-full h-full bg-[#333333] scale-x-0 origin-left transition-normal duration-500 ease-out group-hover:scale-x-100 z-0"></span>
@@ -35,6 +37,7 @@ export default function Hero() {
             <span className="relative z-20 h-full items-baseline gap-2">
               ✨ Welcome to my portfolio
             </span>
+          </div>
           </div>
 
           {/* Name Panel - Colors swapped perfectly */}
@@ -55,7 +58,7 @@ export default function Hero() {
 
           {/* Subheading Tagline */}
           <div className="relative py-1 inline-block">
-            <p className="text-base md:text-xl font-normal text-gray-500 tracking-tight border-l-4 border-gray-900 pl-5 leading-snug">
+            <p className="text-base md:text-xl font-normal text-gray-500 tracking-tight md:border-l-4 border-gray-900 md:pl-5 leading-snug">
               Building scalable web apps & exploring full-stack development
             </p>
           </div>
@@ -126,7 +129,7 @@ export default function Hero() {
           </div>
 
           {/* Social Links Block in Hero Section */}
-          <div className="flex items-center gap-4 mt-6">
+          <div className="flex justify-center md:justify-start items-center gap-4 mt-6">
 
             {/* 1. GITHUB ICON - Circle border reveal on hover */}
             <a
@@ -165,7 +168,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="md:col-span-6 flex flex-col items-center justify-center gap-14 relative w-full"
+         className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center gap-8 md:gap-14 relative w-full"
         >
 
           {/* 3D PROFILE PICTURE FLIP CONTAINER - Size Boosted to w-80 h-80 */}

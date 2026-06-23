@@ -134,7 +134,7 @@ const movieImages = [
           <div className="w-full grid grid-cols-1 md:grid-cols-12 bg-[#f9f9f9] border border-gray-200/90 rounded-3xl overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.05)]">
             
             {/* Left Side: Image Slider Window */}
-            <div className="md:col-span-6 h-[240px] sm:h-[280px] md:h-[360px] bg-white flex items-center justify-start p-0 border-b md:border-b-0 md:border-r border-gray-200/60 relative overflow-hidden">
+            <div className="md:col-span-6 h-[180px] sm:h-[240px] md:h-[360px] bg-white flex items-center justify-start p-0 border-b md:border-b-0 md:border-r border-gray-200/60 relative overflow-hidden">
               <div 
                 className="w-full h-full flex transition-transform duration-400 ease-out"
                 style={{ transform: `translateX(-${mainSlide * 100}%)` }}
@@ -208,7 +208,7 @@ const movieImages = [
           {/* CARD 1: MULTI WAREHOUSE INVENTORY PLATFORM */}
           {(activeTab === 'All' || activeTab === 'Full Stack') && (
             <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
-              <div className="h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
+              <div className="h-[180px] sm:h-[220px] md:h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
                 <div 
                   className="w-full h-full flex transition-transform duration-500 ease-out"
                   style={{ transform: `translateX(-${warehouseSlide * 100}%)` }}
@@ -274,7 +274,7 @@ const movieImages = [
           {/* CARD 2: ONLINE WEB GALLERY APPLICATION */}
           {(activeTab === 'All' || activeTab === 'Full Stack') && (
             <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
-              <div className="h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
+              <div className="h-[180px] sm:h-[220px] md:h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
                 <div 
                   className="w-full h-full flex transition-transform duration-500 ease-out"
                   style={{ transform: `translateX(-${gallerySlide * 100}%)` }}
@@ -342,7 +342,7 @@ const movieImages = [
             <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
               
               {/* Dynamic Image Canvas Slider Window for Sports Car Project */}
-              <div className="h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
+              <div className="h-[180px] sm:h-[220px] md:h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
                 <div 
                   className="w-full h-full flex transition-transform duration-500 ease-out"
                   style={{ transform: `translateX(-${carSlide * 100}%)` }}
@@ -411,7 +411,7 @@ const movieImages = [
   <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
     
     {/* Dynamic Image Canvas Slider Window for Movie Project */}
-    <div className="h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
+    <div className="h-[180px] sm:h-[220px] md:h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
       <div 
         className="w-full h-full flex transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${movieSlide * 100}%)` }}

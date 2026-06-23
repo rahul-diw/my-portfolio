@@ -116,7 +116,7 @@ export default function About() {
 
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* LEFT COLUMN: PROFILE CARD */}
-        <div className="lg:col-span-5 w-full flex justify-center lg:justify-start sticky top-28 transform hover:-translate-y-2 transition-all duration-400 ">
+        <div className="hidden lg:flex lg:col-span-5 w-full justify-start sticky top-0 transform hover:-translate-y-2 transition-all duration-400 ">
           <div className="w-full max-w-[450px] bg-[#FBFBFB] border border-gray-200 rounded-[32px] p-6 flex flex-col items-center shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08),0_0_50px_-10px_rgba(0,0,0,0.02)]">
             {/* Image Wrapper */}
             <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] rounded-[24px] overflow-hidden bg-white relative transform hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08),0_0_50px_-10px_rgba(0,0,0,0.02)]">
@@ -228,7 +228,7 @@ export default function About() {
 
         <div className="lg:col-span-7 w-full flex flex-col gap-10">
           {/* STATS GRID */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
             {stats.map((stat, idx) => (
               <div
                 key={idx}
