@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fcfcfc;
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Moving Arrow Down Animation */
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-bounce-down {
+  animation: bounceDown 2s infinite ease-in-out;
+}
+
+/* Purani file ke neeche bas ye copy-paste kar lo */
+
+/* Vertical Line ke slide aur stretch hone ki animation */
+@keyframes advancedLineSlide {
+  0% {
+    transform: translateY(-8px) scaleY(0.3);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-2px) scaleY(1);
+  }
+  60% {
+    transform: translateY(8px) scaleY(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(14px) scaleY(0.2);
+    opacity: 0;
+  }
+}
+
+/* Outer Bow (Tip) ke halke se move hone ki animation */
+@keyframes advancedBowPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
+}
+
+.animate-line-slide {
+  animation: advancedLineSlide 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
+}
+
+.animate-bow-pulse {
+  animation: advancedBowPulse 1.8s infinite ease-in-out;
+}
