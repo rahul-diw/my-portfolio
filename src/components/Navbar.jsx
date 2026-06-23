@@ -141,20 +141,25 @@ export default function Navbar() {
    <FaGithub className="w-5 h-5 text-black transition-transform duration-300 group-hover:scale-110" />
   </a>
 
-  {/* Mobile Hamburger */}
-  <button
-    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-    className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200"
-  >
-<a
-  href={personalInfo.github}
-  target="_blank"
-  rel="noreferrer"
-  className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-[14px] border border-gray-200 hover:border-gray-300 transition-all duration-300"
+{/* Mobile Hamburger */}
+<button
+  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+  className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-300"
 >
-  GitHub
-</a>
-  </button>
+  <svg
+    className="w-5 h-5"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M4 6h16M4 12h16M4 18h16"
+    />
+  </svg>
+</button>
 
 </div>
 
