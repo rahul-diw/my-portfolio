@@ -85,7 +85,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-300/90 shadow-[0_4px_20px_rgba(0,0,0,0.05)] z-50 py-3 transition-all duration-300 font-jakarta">
-      <div className="max-w-[1280px] mx-auto flex items-center justify-between px-6 sm:px-8 md:px-10 lg:px-0 w-full">
+      <div className="max-w-[1500px] mx-auto flex items-center justify-between px-6 sm:px-8 md:px-10 lg:px-0 w-full">
         
         {/* LEFT SIDE: Logo / Name */}
         <div className="flex-shrink-0">

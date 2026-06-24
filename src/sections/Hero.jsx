@@ -32,7 +32,7 @@ export default function Hero() {
       className="relative min-h-screen md:min-h-[115vh] pt-28 md:pt-50 pb-20 flex flex-col justify-between items-center px-5 md:px-12 max-w-[1440px] mx-auto overflow-hidden"
     >
       {/* Grid split adjusted to 6 & 6 for maximum horizontal span and layout size expansion */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center my-auto">
+      <div className="w-full min-w-0 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center my-auto">
         {/* Left Content Side */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -177,7 +177,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center gap-8 md:gap-14 relative w-full"
+          className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center gap-8 md:gap-14 relative w-full min-w-0"
         >
           {/* 3D PROFILE PICTURE FLIP CONTAINER - Size Boosted to w-80 h-80 */}
           <div className="flex justify-center items-center mb-8 md:mb-0">
@@ -237,7 +237,7 @@ export default function Hero() {
           </div>
 
           {/* CODE TERMINAL BLOCK - Max stretched to fill its 6-column boundary beautifully */}
-          <div className="w-full max-w-2xl bg-[#FBFBFB] text-[#333333] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.04)] overflow-hidden font-mono text-[11px] sm:text-[13px] md:text-[14px] border border-gray-200/60 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300">
+          <div className="w-full max-w-full md:max-w-2xl bg-[#FBFBFB] text-[#333333] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.04)] overflow-hidden font-mono text-[11px] sm:text-[13px] md:text-[14px] border border-gray-200/60 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300">
             {/* Top Window Bar */}
             <div className="bg-[#F3F3F3] px-6 py-4 flex items-center gap-2 border-b border-gray-200/80">
               <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
@@ -249,7 +249,7 @@ export default function Hero() {
             </div>
 
             {/* Code Body */}
-            <div className="p-4 sm:p-6 md:p-8 whitespace-pre overflow-hidden text-left leading-loose select-none bg-[#FAFAFA]">
+            <div className="p-4 sm:p-6 md:p-8 whitespace-pre-wrap break-words overflow-x-auto text-left leading-relaxed select-none bg-[#FAFAFA]">
               <code className="block">
                 <span className="text-blue-600 font-bold">const</span>{" "}
                 <span className="text-purple-600">developer</span> = &#123;

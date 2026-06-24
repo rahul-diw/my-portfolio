@@ -359,6 +359,7 @@ export default function About() {
                   before:duration-300
                   before:ease-out
                   hover:before:translate-x-0
+                  active:before:translate-x-0
                   active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
@@ -377,9 +378,10 @@ export default function About() {
                   before:duration-300
                   before:ease-out
                   hover:before:translate-x-0
+                  active:before:translate-x-0
                   active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   JavaScript
                 </span>                 
               </div>
@@ -395,9 +397,10 @@ export default function About() {
                   before:duration-300
                   before:ease-out
                   hover:before:translate-x-0
+                  active:before:translate-x-0
                   active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   TypeScript
                 </span>
               </div>
@@ -413,9 +416,10 @@ export default function About() {
                 before:duration-300
                 before:ease-out
                 hover:before:translate-x-0
+                active:before:translate-x-0
                 active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   Node.js
                 </span>
               </div>
@@ -431,9 +435,10 @@ export default function About() {
                 before:duration-300
                 before:ease-out
                 hover:before:translate-x-0
+                active:before:translate-x-0
                 active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   Express.js
                 </span>
               </div>
@@ -449,9 +454,10 @@ export default function About() {
                 before:duration-300
                 before:ease-out
                 hover:before:translate-x-0
+                active:before:translate-x-0
                 active:scale-95"
               >                 
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   MongoDB
                 </span>
               </div>
@@ -467,9 +473,10 @@ export default function About() {
                 before:duration-300
                 before:ease-out
                 hover:before:translate-x-0
+                active:before:translate-x-0
                 active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   MySQL
                 </span>
               </div>
@@ -485,9 +492,10 @@ export default function About() {
                 before:duration-300
                 before:ease-out
                 hover:before:translate-x-0
+                active:before:translate-x-0
                 active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   JWT Auth
                 </span>
               </div>
@@ -503,9 +511,10 @@ export default function About() {
                 before:duration-300
                 before:ease-out
                 hover:before:translate-x-0
+                active:before:translate-x-0
                 active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   REST APIs
                 </span>
               </div>
@@ -521,9 +530,10 @@ export default function About() {
                 before:duration-300
                 before:ease-out
                 hover:before:translate-x-0
+                active:before:translate-x-0
                 active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   HTML
                 </span>
               </div>
@@ -539,9 +549,10 @@ export default function About() {
                 before:duration-300
                 before:ease-out
                 hover:before:translate-x-0
+                active:before:translate-x-0
                 active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   CSS
                 </span>
               </div>
@@ -557,9 +568,10 @@ export default function About() {
                   before:duration-300
                   before:ease-out
                   hover:before:translate-x-0
+                  active:before:translate-x-0
                   active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   Tailwind
                 </span>
               </div>
@@ -575,9 +587,10 @@ export default function About() {
                   before:duration-300
                   before:ease-out
                   hover:before:translate-x-0
+                  active:before:translate-x-0
                   active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   Git & GitHub
                 </span>
               </div>
@@ -593,9 +606,10 @@ export default function About() {
                   before:duration-300
                   before:ease-out
                   hover:before:translate-x-0
+                  active:before:translate-x-0
                   active:scale-95"
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white group-active:text-white">
                   PostMan
                 </span>
               </div>
