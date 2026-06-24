@@ -10,6 +10,7 @@ export default function Hero() {
   const { personalInfo } = portfolioData;
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -23,6 +24,10 @@ export default function Hero() {
     return () => {
       window.removeEventListener("resize", checkMobile);
     };
+  }, []);
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
 
   return (
@@ -188,22 +193,22 @@ export default function Hero() {
             >
               <div
                 onClick={() => {
-                  if (isMobile) {
+                  if (isTouchDevice) {
                     setIsHovered(!isHovered);
                   }
                 }}
                 className={`relative w-full h-full transition-transform duration-700 ${
-                  !isMobile
+                  !isTouchDevice
                     ? "group-hover/card:[transform:rotateY(180deg)]"
                     : ""
                 }`}
                 style={{
-                  transformStyle: "preserve-3d",
-                  transform: isMobile
+                  transform: isTouchDevice
                     ? isHovered
                       ? "rotateY(180deg)"
                       : "rotateY(0deg)"
                     : undefined,
+                  transformStyle: "preserve-3d",
                 }}
               >
                 {/* FRONT SIDE - Real Pic */}
