@@ -11,6 +11,7 @@ export default function Hero() {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [autoFlipping, setAutoFlipping] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -29,6 +30,26 @@ export default function Hero() {
   useEffect(() => {
     setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
+
+  useEffect(() => {
+  const flip1 = setTimeout(() => {
+    setIsHovered(true);
+  }, 1500);
+
+  const flip2 = setTimeout(() => {
+    setIsHovered(false);
+  }, 2500);
+
+  const stopAuto = setTimeout(() => {
+    setAutoFlipping(false);
+  }, 2600);
+
+  return () => {
+    clearTimeout(flip1);
+    clearTimeout(flip2);
+    clearTimeout(stopAuto);
+  };
+}, []);
 
   return (
     // Max width increased to 1440px and vertical padding increased to pt-40 pb-20 for a grander size feel
@@ -203,14 +224,19 @@ export default function Hero() {
                     : ""
                 }`}
                 style={{
-                  transform: isTouchDevice
-                    ? isHovered
-                      ? "rotateY(180deg)"
-                      : "rotateY(0deg)"
-                    : undefined,
+                 transform:
+                    autoFlipping || isTouchDevice
+                      ? isHovered
+                        ? "rotateY(180deg)"
+                        : "rotateY(0deg)"
+                     : undefined,
                   transformStyle: "preserve-3d",
                 }}
               >
+
+                <p className="text-xs text-gray-400 mt-3 text-center">
+                   {isTouchDevice ? "↻ Tap to Flip" : "↻ Hover to Flip"}
+                  </p>
                 {/* FRONT SIDE - Real Pic */}
                 <div
                   className="absolute inset-0 w-full h-full rounded-full shadow-lg bg-transparent overflow-hidden"
