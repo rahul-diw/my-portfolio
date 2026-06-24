@@ -110,7 +110,7 @@ const movieImages = [
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`group relative overflow-hidden px-5 py-1.5 rounded-full text-[13px] font-medium border cursor-pointer transition-all duration-300
+                className={`group relative overflow-hidden px-5 py-1.5 rounded-full text-[13px] font-medium border cursor-pointer transition-all duration-300 active:scale-95
                 
                 ${
                   activeTab === tab
@@ -119,7 +119,7 @@ const movieImages = [
                 }`}
               >
                 {activeTab !== tab && (
-                    <span className="absolute inset-0 bg-[#3b3734] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span className="absolute inset-0 bg-[#3b3734] -translate-x-full group-hover:translate-x-0 group-active:translate-x-0 transition-transform duration-300 ease-out"></span>
                   )}                  
             <span className="relative z-10">{tab}</span>
           </button>
@@ -131,7 +131,7 @@ const movieImages = [
         
         {/* 3. MAIN FEATURED CAPSULE */}
         {(activeTab === 'All' || activeTab === 'Full Stack') && (
-          <div className="w-full grid grid-cols-1 md:grid-cols-12 bg-[#f9f9f9] border border-gray-200/90 rounded-3xl overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.05)]">
+          <div className="w-full grid grid-cols-1 md:grid-cols-12 bg-[#f9f9f9] border border-gray-200/90 rounded-3xl overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2 active:scale-[0.99] hover:border-gray-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.05)]">
             
             {/* Left Side: Image Slider Window */}
             <div className="md:col-span-6 h-[180px] sm:h-[240px] md:h-[360px] bg-white flex items-center justify-start p-0 border-b md:border-b-0 md:border-r border-gray-200/60 relative overflow-hidden">
@@ -176,7 +176,7 @@ const movieImages = [
                 {["Next.js (v14)", "Node.js", "Express.js", "Tailwind CSS", "MongoDB", "JWT"].map((tech, index) => (
                  <span
                   key={index}
-                  className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-md cursor-default"
+                  className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-md active:scale-95 cursor-default"
                 >
                     {tech}
                   </span>
@@ -207,7 +207,7 @@ const movieImages = [
           
           {/* CARD 1: MULTI WAREHOUSE INVENTORY PLATFORM */}
           {(activeTab === 'All' || activeTab === 'Full Stack') && (
-            <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
+            <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 active:scale-[0.98] hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
               <div className="h-[180px] sm:h-[220px] md:h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
                 <div 
                   className="w-full h-full flex transition-transform duration-500 ease-out"
@@ -247,7 +247,7 @@ const movieImages = [
                   {["React.js", "Node.js", "Express.js", "MySQL"].map((tech, idx) => (
                    <span
                     key={idx}
-                    className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.15)] cursor-default"
+                    className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full transition-all duration-300 hover:-translate-y-1  hover:border-gray-500 hover:text-gray-900 hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.15)] active:scale-95cursor-default"
                 >
                       {tech}
                     </span>
@@ -273,7 +273,7 @@ const movieImages = [
 
           {/* CARD 2: ONLINE WEB GALLERY APPLICATION */}
           {(activeTab === 'All' || activeTab === 'Full Stack') && (
-            <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
+            <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 active:scale-[0.98] hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
               <div className="h-[180px] sm:h-[220px] md:h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
                 <div 
                   className="w-full h-full flex transition-transform duration-500 ease-out"
@@ -313,7 +313,7 @@ const movieImages = [
                   {["React.js", "Node.js", "Tailwind CSS", "MongoDB", "Cloudinary"].map((tech, idx) => (
                     <span
                     key={idx}
-                    className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.15)] cursor-default"
+                    className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.15)] active:scale-95 cursor-default"
                     >
                       {tech}
                     </span>
@@ -339,7 +339,7 @@ const movieImages = [
 
           {/* CARD 3: SPORTS CAR SPECIFICATION WEBSITE (DYNAMIC SLIDER INTEGRATED HERE ⚡) */}
           {(activeTab === 'All' || activeTab === 'JavaScript') && (
-            <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
+            <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 active:scale-[0.98] hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
               
               {/* Dynamic Image Canvas Slider Window for Sports Car Project */}
               <div className="h-[180px] sm:h-[220px] md:h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
@@ -382,7 +382,7 @@ const movieImages = [
                   {["JavaScript", "HTML5", "CSS3", "Responsive Architecture"].map((tech, idx) => (
                     <span
                       key={idx}
-                      className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.15)] cursor-default"
+                      className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.15)] active:scale-95 cursor-default"
                     >
                       {tech}
                     </span>
@@ -408,7 +408,7 @@ const movieImages = [
 
           {/* CARD 4: MODERN MOVIE WEBSITE (DYNAMIC SLIDER INTEGRATED HERE ⚡) */}
 {(activeTab === 'All' || activeTab === 'JavaScript') && (
-  <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
+  <div className="flex flex-col bg-[#f9f9f9] border border-gray-200/90 rounded-2xl overflow-hidden group w-full transition-all duration-500 ease-out hover:-translate-y-2 active:scale-[0.98] hover:border-gray-300 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.10),0_0_40px_-10px_rgba(0,0,0,0.04)]">
     
     {/* Dynamic Image Canvas Slider Window for Movie Project */}
     <div className="h-[180px] sm:h-[220px] md:h-[260px] bg-white border-b border-gray-200/60 relative overflow-hidden p-2">
@@ -451,7 +451,7 @@ const movieImages = [
         {["JavaScript", "HTML5", "CSS3", "UI Depth Layout"].map((tech, idx) => (
           <span
             key={idx}
-            className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.15)] cursor-default"
+            className="text-[11px] font-normal text-gray-600 bg-white border border-gray-300 px-2.5 py-0.5 rounded-full transition-all duration-300 hover:-translate-y-1 hover:border-gray-500 hover:text-gray-900 hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.15)] active:scale-95 cursor-default"
           >
             {tech}
           </span>

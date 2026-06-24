@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { portfolioData } from "../data/portfolioData";
 
 // Pehle se chal rahe imports ke thik niche lagao:
@@ -9,12 +9,27 @@ import PicAvatar from "../assets/Rahul-pic2.png"; // Cartoon/Vector look pic
 export default function Hero() {
   const { personalInfo } = portfolioData;
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   return (
     // Max width increased to 1440px and vertical padding increased to pt-40 pb-20 for a grander size feel
     <section
       id="home"
-     className="relative min-h-screen md:min-h-[115vh] pt-28 md:pt-50 pb-20 flex flex-col justify-between items-center px-5 md:px-12 max-w-[1440px] mx-auto overflow-hidden"
+      className="relative min-h-screen md:min-h-[115vh] pt-28 md:pt-50 pb-20 flex flex-col justify-between items-center px-5 md:px-12 max-w-[1440px] mx-auto overflow-hidden"
     >
       {/* Grid split adjusted to 6 & 6 for maximum horizontal span and layout size expansion */}
       <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center my-auto">
@@ -23,21 +38,19 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-        className="order-2 md:order-1 md:col-span-6 space-y-7 text-center md:text-left md:-translate-y-12"
+          className="order-2 md:order-1 md:col-span-6 space-y-7 text-center md:text-left md:-translate-y-12"
         >
           {/* 1. WELCOME BADGE - Dark Gray Slide from Left on Hover */}
 
           <div className="flex justify-center md:justify-start">
-          <div
-            className="group relative -top-8 inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-500 rounded-full text-xs font-semibold tracking-wide border border-gray-200/60 shadow-sm cursor-pointer overflow-hidden transition-colors duration-300 hover:text-white relative -top-8"
-          >
-            {/* Sliding Background Cover */}
-            <span className="absolute inset-0 w-full h-full bg-[#333333] scale-x-0 origin-left transition-normal duration-500 ease-out group-hover:scale-x-100 z-0"></span>
-            {/* Content stays on top */}
-            <span className="relative z-20 h-full items-baseline gap-2">
-              ✨ Welcome to my portfolio
-            </span>
-          </div>
+            <div className="group relative -top-8 inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-500 rounded-full text-xs font-semibold tracking-wide border border-gray-200/60 shadow-sm cursor-pointer overflow-hidden transition-colors duration-300 hover:text-white relative -top-8">
+              {/* Sliding Background Cover */}
+              <span className="absolute inset-0 w-full h-full bg-[#333333] scale-x-0 origin-left transition-normal duration-500 ease-out group-hover:scale-x-100 group-active:scale-x-100 z-0"></span>
+              {/* Content stays on top */}
+              <span className="relative z-20 h-full items-baseline gap-2">
+                ✨ Welcome to my portfolio
+              </span>
+            </div>
           </div>
 
           {/* Name Panel - Colors swapped perfectly */}
@@ -75,10 +88,10 @@ export default function Hero() {
             {/* 2. VIEW MY WORK BUTTON - White Slide from Left on Hover (Opposite Effect) */}
             <a
               href="#projects"
-              className="group relative inline-flex items-center gap-3 bg-[#333333] text-white px-7 py-3.5 rounded-full font-medium overflow-hidden border border-transparent hover:border-gray-300 transition-colors duration-300 hover:text-black text-sm tracking-wide shadow-sm"
+              className="group relative inline-flex items-center gap-3 bg-[#333333] text-white px-7 py-3.5 rounded-full font-medium overflow-hidden border border-transparent hover:border-gray-300 transition-colors duration-300 hover:text-black text-sm tracking-wide shadow-sm active:scale-95"
             >
               {/* Sliding White Background */}
-              <span className="absolute inset-0 w-full h-full bg-white scale-x-0 origin-left transition-transform duration-600 ease-out group-hover:scale-x-100 z-0"></span>
+              <span className="absolute inset-0 w-full h-full bg-white scale-x-0 origin-left transition-transform duration-600 ease-out group-hover:scale-x-100 group-active:scale-x-100 z-0"></span>
 
               {/* Real Text Content on top layer */}
               <span className="w-full sm:w-auto relative z-10 flex items-center gap-3">
@@ -102,11 +115,10 @@ export default function Hero() {
             {/* 3. LET'S CONNECT BUTTON - Dark Gray Slide from Left on Hover */}
             <a
               href="#contact"
-              className="group relative inline-flex items-center gap-3 border border-gray-300 bg-white text-gray-700 px-7 py-3.5 rounded-full font-medium overflow-hidden transition-colors duration-300 hover:text-white text-sm tracking-wide shadow-sm"
+              className="group relative inline-flex items-center gap-3 border border-gray-300 bg-white text-gray-700 px-7 py-3.5 rounded-full font-medium overflow-hidden transition-colors duration-300 hover:text-white text-sm tracking-wide shadow-sm active:scale-95"
             >
-
               {/* Sliding Dark Gray Background */}
-              <span className="absolute inset-0 w-full h-full bg-[#333333] scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></span>
+              <span className="absolute inset-0 w-full h-full bg-[#333333] scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 group-active:scale-x-100 z-0"></span>
 
               {/* Real Text Content on top layer */}
               <span className="w-full sm:w-auto relative z-10 flex items-center gap-3">
@@ -116,7 +128,7 @@ export default function Hero() {
                   fill="none"
                   viewBox="0 0 20 25"
                   stroke="currentColor"
-                  strokeWidth={2} 
+                  strokeWidth={2}
                 >
                   <path
                     strokeLinecap="round"
@@ -130,13 +142,12 @@ export default function Hero() {
 
           {/* Social Links Block in Hero Section */}
           <div className="flex justify-center md:justify-start items-center gap-4 mt-6">
-
             {/* 1. GITHUB ICON - Circle border reveal on hover */}
             <a
               href={personalInfo.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-transparent hover:border-gray-200 bg-transparent text-gray-700 hover:text-black transition-all duration-300 ease-out hover:scale-110"
+              className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-transparent hover:border-gray-200 bg-transparent text-gray-700 hover:text-black transition-all duration-300 ease-out hover:scale-110 active:scale-95"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
@@ -148,15 +159,13 @@ export default function Hero() {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-transparent hover:border-gray-200 bg-transparent text-gray-700 hover:text-black transition-all duration-300 ease-out hover:scale-110"
+              className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-transparent hover:border-gray-200 bg-transparent text-gray-700 hover:text-black transition-all duration-300 ease-out hover:scale-110 active:scale-95"
             >
-
               <svg
                 className="w-[22px] h-[22px]"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
-
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
               </svg>
             </a>
@@ -168,24 +177,35 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-         className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center gap-8 md:gap-14 relative w-full"
+          className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center gap-8 md:gap-14 relative w-full"
         >
-
           {/* 3D PROFILE PICTURE FLIP CONTAINER - Size Boosted to w-80 h-80 */}
           <div className="flex justify-center items-center mb-8 md:mb-0">
-
             {/* Perspective Wrapper - Width and Height bumped to w-80 h-80 */}
             <div
               className="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 group/card cursor-pointer"
               style={{ perspective: "1000px" }}
             >
-
-              {/* Inner Card Layer */}
               <div
-                className="relative w-full h-full transition-transform duration-700 group-hover/card:[transform:rotateY(180deg)]"
-                style={{ transformStyle: "preserve-3d" }}
+                onClick={() => {
+                  if (isMobile) {
+                    setIsHovered(!isHovered);
+                  }
+                }}
+                className={`relative w-full h-full transition-transform duration-700 ${
+                  !isMobile
+                    ? "group-hover/card:[transform:rotateY(180deg)]"
+                    : ""
+                }`}
+                style={{
+                  transformStyle: "preserve-3d",
+                  transform: isMobile
+                    ? isHovered
+                      ? "rotateY(180deg)"
+                      : "rotateY(0deg)"
+                    : undefined,
+                }}
               >
-
                 {/* FRONT SIDE - Real Pic */}
                 <div
                   className="absolute inset-0 w-full h-full rounded-full shadow-lg bg-transparent overflow-hidden"
@@ -217,8 +237,7 @@ export default function Hero() {
           </div>
 
           {/* CODE TERMINAL BLOCK - Max stretched to fill its 6-column boundary beautifully */}
-          <div className="w-full max-w-2xl bg-[#FBFBFB] text-[#333333] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.04)] overflow-hidden font-mono text-[11px] sm:text-[13px] md:text-[14px] border border-gray-200/60 transform hover:-translate-y-1 transition-all duration-300">
-          
+          <div className="w-full max-w-2xl bg-[#FBFBFB] text-[#333333] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.04)] overflow-hidden font-mono text-[11px] sm:text-[13px] md:text-[14px] border border-gray-200/60 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300">
             {/* Top Window Bar */}
             <div className="bg-[#F3F3F3] px-6 py-4 flex items-center gap-2 border-b border-gray-200/80">
               <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
@@ -261,11 +280,9 @@ export default function Hero() {
                 <span className="text-amber-600">"Next.js"</span>,{" "}
                 <span className="text-amber-600">"Node.js"</span>,{" "}
                 <span className="text-amber-600">"MongoDB"</span>,{" "}
-                <span className="text-amber-600">"MySQL"</span>,{" "}
-                <br/>
+                <span className="text-amber-600">"MySQL"</span>, <br />
                 <span className="text-amber-600">"Git"</span>,{" "}
                 <span className="text-amber-600">"GitHub"</span>],
-                  
                 <br />
                 &nbsp;&nbsp;<span className="text-teal-600">
                   dsaProblems

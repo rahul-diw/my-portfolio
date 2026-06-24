@@ -25,9 +25,9 @@ export default function ContactSection() {
       <div className="absolute -bottom-44 -right-44 w-[550px] h-[550px] rounded-full bg-gray-400/25 blur-[150px] pointer-events-none" />
 
       {/* BIGGER WRAPPER - MAX-W-7XL FOR THAT LARGE/WIDE LOOK IN YOUR PIC */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-13">
+      <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* LEFT CARD: SEND A MAIL (INCREASED PADDING & SPACING) */}
-        <div className="bg-[#fcfcfc] border border-gray-200/80 rounded-[32px] p-6 sm:p-8 md:p-12 flex flex-col justify-between text-left transition-all duration-500 ease-out hover:-translate-y-3 shadow-[0_2px_4px_rgba(0,0,0,0.01)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.06)]">
+        <div className="bg-[#fcfcfc] border border-gray-200/80 rounded-[32px] p-6 sm:p-8 md:p-12 flex flex-col justify-between text-left transition-all duration-500 ease-out hover:-translate-y-3 active:scale-[0.98] shadow-[0_2px_4px_rgba(0,0,0,0.01)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.06)]">
           <div>
             {/* Bigger Mail Icon Header */}
             <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white border border-gray-200/70 shadow-2xs mb-8">
@@ -139,11 +139,11 @@ export default function ContactSection() {
               {/* Bigger Taller Send Button */}
               <button
                 type="submit"
-                className="w-full py-4 bg-[#3b3734] hover:bg-[#2b2826] text-white text-[14px] font-medium rounded-4xl flex items-center justify-center gap-2 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_35px_-10px_rgba(0,0,0,0.25)] cursor-pointer shadow-md mt-4"
+                className="w-full py-4 bg-[#3b3734] hover:bg-[#2b2826] text-white text-[14px] font-medium rounded-4xl flex items-center justify-center gap-2 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_35px_-10px_rgba(0,0,0,0.25)] cursor-pointer shadow-md mt-4 group active:scale-95"
               >
                 Send Message
                 <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-active:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -161,7 +161,7 @@ export default function ContactSection() {
         </div>
 
         {/* RIGHT CARD: LET'S WORK TOGETHER (INCREASED SIZES) */}
-        <div className="bg-[#fcfcfc] border border-gray-200/80 rounded-[32px] p-10 md:p-12 flex flex-col justify-between text-left transition-all duration-500 ease-out hover:-translate-y-3 shadow-[0_2px_4px_rgba(0,0,0,0.01)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.06)]">
+        <div className="bg-[#fcfcfc] border border-gray-200/80 rounded-[32px] p-10 md:p-12 flex flex-col justify-between text-left transition-all duration-500 ease-out hover:-translate-y-3 active:scale-[0.98] shadow-[0_2px_4px_rgba(0,0,0,0.01)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.06)]">
           <div>
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f3f3f3]/80 rounded-full text-[12px] font-medium text-gray-600 mb-8 border border-gray-200/20">
@@ -200,7 +200,7 @@ export default function ContactSection() {
                 href="https://github.com/rahul-diw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full px-5 py-3 bg-white border border-gray-200/70 rounded-2xl flex items-center justify-between text-[14.5px] text-gray-800 font-semibold shadow-2xs hover:border-gray-300 hover:bg-gray-50/50 transition-all cursor-pointer no-underline"
+                className="w-full px-5 py-3 bg-white border border-gray-200/70 rounded-2xl flex items-center justify-between text-[14.5px] text-gray-800 font-semibold shadow-2xs hover:border-gray-300 hover:bg-gray-50/50 active:scale-[0.98] transition-all cursor-pointer no-underline"
               >
                 <span>GitHub</span>
                 <svg
@@ -221,7 +221,7 @@ export default function ContactSection() {
               {/* LinkedIn Link Card */}
               <a
                 href="https://www.linkedin.com/in/rahul-diwakar-7420072b0/"
-                className="w-full px-5 py-3 bg-white border border-gray-200/70 rounded-2xl flex items-center justify-between text-[14.5px] text-gray-800 font-semibold shadow-2xs hover:border-gray-300 hover:bg-gray-50/50 transition-all cursor-pointer no-underline"
+                className="w-full px-5 py-3 bg-white border border-gray-200/70 rounded-2xl flex items-center justify-between text-[14.5px] text-gray-800 font-semibold shadow-2xs hover:border-gray-300 hover:bg-gray-50/50 active:scale-[0.98] transition-all cursor-pointer no-underline"
               >
                 <span>LinkedIn</span>
                 <svg

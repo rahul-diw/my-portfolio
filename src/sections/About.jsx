@@ -232,7 +232,7 @@ export default function About() {
             {stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="group bg-[#f4f4f5] border border-gray-300 rounded-[20px] p-4 sm:p-5 flex flex-col items-center justify-center text-center shadow-[0_4px_24px_rgba(0,0,0,0.01)] transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-gray-400 hover:bg-white cursor-pointer"
+                className="group bg-[#f4f4f5] border border-gray-300 rounded-[20px] p-4 sm:p-5 flex flex-col items-center justify-center text-center shadow-[0_4px_24px_rgba(0,0,0,0.01)] transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-gray-400 hover:bg-white active:scale-[0.97] cursor-pointer"
               >
                 <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mb-3 border border-gray-300/70 transition-all duration-300 group-hover:bg-white">
                   {getIcon(stat.label)}
@@ -300,7 +300,7 @@ export default function About() {
                   return (
                     <div
                       key={idx}
-                      className="group w-full bg-[#f6f6f7] border border-gray-200 rounded-[18px] p-5 md:p-6 pl-7 md:pl-8 shadow-[0_2px_10px_rgba(0,0,0,0.005)] relative flex flex-col items-start gap-2 transition-all duration-300 hover:border-gray-300 hover:bg-white hover:-translate-y-0.5 cursor-pointer"
+                      className="group w-full bg-[#f6f6f7] border border-gray-200 rounded-[18px] p-5 md:p-6 pl-7 md:pl-8 shadow-[0_2px_10px_rgba(0,0,0,0.005)] relative flex flex-col items-start gap-2 transition-all duration-300 hover:border-gray-300 hover:bg-white hover:-translate-y-0.5 active:scale-[0.98] cursor-pointer"
                     >
                       {/* Left Dot - Hover par black ho jayega */}
                       <span className="absolute left-4 top-[28px] w-1.5 h-1.5 rounded-full bg-gray-400 transition-all duration-300 ease-out group-hover:scale-150 group-hover:bg-gray-950" />
@@ -358,7 +358,8 @@ export default function About() {
                   before:transition-transform
                   before:duration-300
                   before:ease-out
-                  hover:before:translate-x-0"
+                  hover:before:translate-x-0
+                  active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   React
@@ -375,7 +376,8 @@ export default function About() {
                   before:transition-transform
                   before:duration-300
                   before:ease-out
-                  hover:before:translate-x-0"
+                  hover:before:translate-x-0
+                  active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   JavaScript
@@ -392,7 +394,8 @@ export default function About() {
                   before:transition-transform
                   before:duration-300
                   before:ease-out
-                  hover:before:translate-x-0"
+                  hover:before:translate-x-0
+                  active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   TypeScript
@@ -409,7 +412,8 @@ export default function About() {
                 before:transition-transform
                 before:duration-300
                 before:ease-out
-                hover:before:translate-x-0"
+                hover:before:translate-x-0
+                active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   Node.js
@@ -426,7 +430,8 @@ export default function About() {
                 before:transition-transform
                 before:duration-300
                 before:ease-out
-                hover:before:translate-x-0"
+                hover:before:translate-x-0
+                active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   Express.js
@@ -443,7 +448,8 @@ export default function About() {
                 before:transition-transform
                 before:duration-300
                 before:ease-out
-                hover:before:translate-x-0"
+                hover:before:translate-x-0
+                active:scale-95"
               >                 
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   MongoDB
@@ -460,7 +466,8 @@ export default function About() {
                 before:transition-transform
                 before:duration-300
                 before:ease-out
-                hover:before:translate-x-0"
+                hover:before:translate-x-0
+                active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   MySQL
@@ -477,7 +484,8 @@ export default function About() {
                 before:transition-transform
                 before:duration-300
                 before:ease-out
-                hover:before:translate-x-0"
+                hover:before:translate-x-0
+                active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   JWT Auth
@@ -494,7 +502,8 @@ export default function About() {
                 before:transition-transform
                 before:duration-300
                 before:ease-out
-                hover:before:translate-x-0"
+                hover:before:translate-x-0
+                active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   REST APIs
@@ -511,7 +520,8 @@ export default function About() {
                 before:transition-transform
                 before:duration-300
                 before:ease-out
-                hover:before:translate-x-0"
+                hover:before:translate-x-0
+                active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   HTML
@@ -528,7 +538,8 @@ export default function About() {
                 before:transition-transform
                 before:duration-300
                 before:ease-out
-                hover:before:translate-x-0"
+                hover:before:translate-x-0
+                active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   CSS
@@ -545,7 +556,8 @@ export default function About() {
                   before:transition-transform
                   before:duration-300
                   before:ease-out
-                  hover:before:translate-x-0"
+                  hover:before:translate-x-0
+                  active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   Tailwind
@@ -562,7 +574,8 @@ export default function About() {
                   before:transition-transform
                   before:duration-300
                   before:ease-out
-                  hover:before:translate-x-0"
+                  hover:before:translate-x-0
+                  active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   Git & GitHub
@@ -579,7 +592,8 @@ export default function About() {
                   before:transition-transform
                   before:duration-300
                   before:ease-out
-                  hover:before:translate-x-0"
+                  hover:before:translate-x-0
+                  active:scale-95"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   PostMan
@@ -639,8 +653,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 w-full
-            before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
+                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 active:scale-[0.98] w-full
+                      before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
                     >
                       <div className="relative z-10 flex flex-col gap-1.5 w-full">
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
@@ -681,8 +695,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 w-full
-            before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
+                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 active:scale-[0.98] w-full
+                      before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
                     >
                       <div className="relative z-10 flex flex-col gap-1.5 w-full">
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
@@ -718,8 +732,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 w-full
-            before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
+                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 active:scale-[0.98] w-full
+                      before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
                     >
                       <div className="relative z-10 flex flex-col gap-1.5 w-full">
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
@@ -755,8 +769,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 w-full
-            before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
+                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 active:scale-[0.98] w-full
+                      before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
                     >
                       <div className="relative z-10 flex flex-col gap-1.5 w-full">
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
@@ -817,8 +831,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 w-full
-            before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
+                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 active:scale-[0.98] w-full
+                      before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
                     >
                       <div className="relative z-10 flex flex-col gap-1.5 w-full">
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
@@ -855,8 +869,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 w-full
-            before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
+                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 active:scale-[0.98] w-full
+                    before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
                     >
                       <div className="relative z-10 flex flex-col gap-1.5 w-full">
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
@@ -893,8 +907,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 w-full
-            before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
+                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 active:scale-[0.98] w-full
+                       before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
                     >
                       <div className="relative z-10 flex flex-col gap-1.5 w-full">
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
@@ -931,8 +945,8 @@ export default function About() {
                     </div>
 
                     <div
-                      className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 w-full
-            before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
+                    className="group relative overflow-hidden bg-gray-50/40 border border-gray-200/70 rounded-2xl p-6 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.04)] transform transition-all duration-300 ease-out hover:translate-x-1.5 hover:border-gray-300 active:scale-[0.98] w-full
+                    before:absolute before:inset-0 before:w-full before:h-full before:bg-slate-100/50 before:-translate-x-full hover:before:translate-x-0 before:transition-transform before:duration-300 before:ease-out"
                     >
                       <div className="relative z-10 flex flex-col gap-1.5 w-full">
                         <span className="text-[11px] text-gray-600 tracking-wide font-medium">
@@ -959,10 +973,10 @@ export default function About() {
             <a
               href="/RESUME NEW.pdf"
               download="Rahul_Diwakar_Resume.pdf"
-              className="group relative overflow-hidden flex items-center justify-center gap-2 bg-[#44403c] text-white px-7 py-3.5 rounded-full font-medium text-[14px] shadow-sm transition-all duration-300 hover:shadow-lg w-full sm:w-auto cursor-pointer no-underline"
+              className="group relative overflow-hidden flex items-center justify-center gap-2 bg-[#44403c] text-white px-7 py-3.5 rounded-full font-medium text-[14px] shadow-sm transition-all duration-300 hover:shadow-lg w-full sm:w-auto cursor-pointer no-underline active:scale-95"
             >
               {/* Sliding White Background */}
-              <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+              <span className="absolute inset-0 bg-white scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 group-active:scale-x-100"></span>
 
               {/* Content */}
               <span className="relative z-10 flex items-center gap-2 group-hover:text-[#44403c] transition-colors duration-300">
@@ -987,9 +1001,9 @@ export default function About() {
               href="https://wa.me/917417080079"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden flex items-center justify-center gap-1.5 bg-white text-gray-800 border border-gray-300 px-7 py-3.5 rounded-full font-medium text-[14px] shadow-sm transition-all duration-300 hover:shadow-lg w-full sm:w-auto cursor-pointer no-underline"
+              className="group relative overflow-hidden flex items-center justify-center gap-1.5 bg-white text-gray-800 border border-gray-300 px-7 py-3.5 rounded-full font-medium text-[14px] shadow-sm transition-all duration-300 hover:shadow-lg w-full sm:w-auto cursor-pointer no-underline active:scale-95"
             >
-              <span className="absolute inset-0 bg-[#44403c] scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+              <span className="absolute inset-0 bg-[#44403c] scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 group-active:scale-x-100"></span>
 
               <span className="relative z-10 flex items-center gap-1.5 group-hover:text-white transition-colors duration-300">
                 <svg
