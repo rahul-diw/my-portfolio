@@ -32,7 +32,7 @@ export default function Hero() {
       className="relative min-h-screen md:min-h-[115vh] pt-28 md:pt-50 pb-20 flex flex-col justify-between items-center px-5 md:px-12 max-w-[1440px] mx-auto overflow-hidden"
     >
       {/* Grid split adjusted to 6 & 6 for maximum horizontal span and layout size expansion */}
-      <div className="w-full min-w-0 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center my-auto">
+      <div className="w-full min-w-0 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-center my-auto">
         {/* Left Content Side */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -177,7 +177,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center gap-8 md:gap-14 relative w-full min-w-0"
+          className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center gap-8 md:gap-14 relative w-full"
         >
           {/* 3D PROFILE PICTURE FLIP CONTAINER - Size Boosted to w-80 h-80 */}
           <div className="flex justify-center items-center mb-8 md:mb-0">
