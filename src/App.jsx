@@ -4,6 +4,7 @@ import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
+import AuroraBackground from "./effects/AuroraBackground";
 
 /**
  * PageTransitionWrapper:
@@ -63,7 +64,9 @@ function PageTransitionWrapper({ children, delay = 0 }) {
 
 export default function App() {
   return (
-    <div className="bg-[#fafafa] min-h-screen text-gray-900 antialiased selection:bg-neutral-200">
+      <>
+    <AuroraBackground />
+    <div className="bg-transparent min-h-screen text-gray-900 antialiased selection:bg-neutral-200">
       <Navbar />
       <main>
         {/* Hero (Home) Section with instant transition */}
@@ -87,5 +90,6 @@ export default function App() {
         </PageTransitionWrapper>
       </main>
     </div>
+    </>
   );
 }
