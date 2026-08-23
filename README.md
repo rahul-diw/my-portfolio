@@ -1,36 +1,37 @@
-# Developer Portfolio Website
+# Personal Developer Portfolio Website
 
-A high-performance personal portfolio platform built to demonstrate technical projects, software engineering architecture, and full-stack development capabilities.
-
-[Live Demonstration](https://my-portfolio-drab-iota-18.vercel.app/) | [GitHub Repository](https://github.com/rahul-diw/my-portfolio)
+A modern, high-performance developer portfolio built with Next.js, React, TypeScript, and Tailwind CSS to showcase technical projects, core engineering skills, and full-stack capabilities.
 
 ---
 
 ## Overview
 
-This repository contains the codebase for my personal developer portfolio. Built with Next.js, React, and Tailwind CSS, the platform focuses on optimized page loads, clean UI component abstraction, dynamic project rendering, and responsive design patterns across all viewports.
+This personal portfolio website showcases my technical projects, software engineering skills, and professional journey as a Full-Stack Developer. It features a responsive design, sleek UI/UX components, dynamic project filtering, dark mode aesthetics, and optimized web performance.
+
+The application is engineered to present technical expertise to recruiters, engineering managers, and clients effectively with fast page loading times and smooth interactions.
 
 ---
 
 ## Core Objectives
 
-- **Performance Optimization:** Leverages Next.js Server-Side Rendering (SSR) and asset compression for fast page load metrics.
-- **Responsive Layout:** Responsive layout grid engineered for desktop, tablet, and mobile browsers.
-- **Component Architecture:** Modular React components ensuring scalable code maintainability and reusability.
-- **SEO & Metadata:** Structured OpenGraph metadata and search engine optimization setups.
+✅ **Performance Optimization:** Leverages Server-Side Rendering (SSR) and asset compression for fast load times.
+✅ **Responsive Layout:** Optimized grid system engineered for mobile, tablet, and desktop viewports.
+✅ **Component Architecture:** Modular React component abstraction ensuring clean and maintainable code.
+✅ **Project Showcase:** Interactive UI cards displaying feature details, live links, and repository tags.
+✅ **Contact Integration:** Seamless communication workflow for direct queries and opportunities.
 
 ---
 
 ## System Architecture
 
 ```text
-[ Client Request ]
+[ Client Browser ]
        │
        ▼
 [ Next.js Framework (App Router) ]
  ├── UI Layer (React + Tailwind CSS)
  ├── Static Asset Pipeline
- └── Routing & Metadata Management
+ └── Routing & SEO Metadata Management
        │
        ▼
 [ Edge Deployment: Vercel CDN ]
