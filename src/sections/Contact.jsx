@@ -1,9 +1,20 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ContactSection() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  const handleCardMouseMove = (e) => {
+  const rect = e.currentTarget.getBoundingClientRect();
+
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+  e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+};
 
   const handleMessageChange = (e) => {
     if (e.target.value.length <= 500) {
@@ -17,7 +28,25 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden w-full py-20 md:py-30 bg-[#fafafa] flex flex-col items-center px-4 sm:px-8 md:px-16 font-sans">
+    <motion.section
+      id="contact"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={{
+        hidden: {
+          opacity: 0,
+        },
+        show: {
+          opacity: 1,
+          transition: {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          },
+        },
+      }}
+      className="relative overflow-hidden w-full py-20 md:py-30 bg-transparent flex flex-col items-center px-4 sm:px-8 md:px-16 font-sans"
+    >
       {/* Top Left Edge Effect */}
       <div className="absolute -top-44 -left-44 w-[550px] h-[550px] rounded-full bg-gray-400/25 blur-[150px] pointer-events-none" />
 
@@ -27,10 +56,48 @@ export default function ContactSection() {
       {/* BIGGER WRAPPER - MAX-W-7XL FOR THAT LARGE/WIDE LOOK IN YOUR PIC */}
       <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* LEFT CARD: SEND A MAIL (INCREASED PADDING & SPACING) */}
-        <div className="bg-[#fcfcfc] border border-gray-200/80 rounded-[32px] p-6 sm:p-8 md:p-12 flex flex-col justify-between text-left transition-all duration-500 ease-out hover:-translate-y-3 active:scale-[0.98] shadow-[0_2px_4px_rgba(0,0,0,0.01)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.06)]">
+        <motion.div
+          onMouseMove={handleCardMouseMove}
+          initial={{
+            opacity: 0,
+            x: -70,
+            y: 40,
+            filter: "blur(12px)",
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            y: 0,
+            filter: "blur(0px)",
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="group relative overflow-hidden bg-gradient-to-br from-white/[0.09] via-white/[0.045] to-transparent border border-white/[0.10] rounded-[32px] p-6 sm:p-8 md:p-12 flex flex-col justify-between text-left backdrop-blur-2xl transition-all duration-500 ease-out hover:-translate-y-3 active:scale-[0.98] shadow-[0_30px_80px_-25px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.08)] hover:border-cyan-400/20 hover:shadow-[0_35px_90px_-25px_rgba(0,0,0,0.8),0_0_45px_-15px_rgba(34,211,238,0.75),inset_0_1px_0_rgba(255,255,255,0.12)]"
+        >
+          {/* Glossy Reflection */}
+          <div className="pointer-events-none absolute top-0 -left-[120%] h-full w-[55%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/[0.07] to-transparent opacity-0 group-hover:left-[150%] group-hover:opacity-100 transition-all duration-[1100ms] ease-out z-20" />
+          <div
+            className="pointer-events-none absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{
+              background:
+                "radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), rgba(34,211,238,0.12), transparent 65%)",
+            }}
+          />
+          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[32px]">
+            <div className="absolute -top-32 -left-32 w-[360px] h-[360px] rounded-full bg-cyan-400/[0.07] blur-[100px]" />
+            <div className="absolute -bottom-40 -right-32 w-[320px] h-[320px] rounded-full bg-violet-500/[0.06] blur-[110px]" />
+            <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          </div>
+
           <div>
             {/* Bigger Mail Icon Header */}
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white border border-gray-200/70 shadow-2xs mb-8">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/[0.045] border border-gray-200/70 shadow-2xs mb-8">
               <svg
                 className="w-6 h-6 text-gray-700"
                 fill="none"
@@ -47,10 +114,10 @@ export default function ContactSection() {
             </div>
 
             {/* Bigger Headings */}
-            <h3 className="text-[28px] md:text-[32px] font-bold text-gray-900 tracking-tight mb-2">
+            <h3 className="text-[28px] md:text-[32px] font-bold text-white tracking-tight mb-2">
               Send a Mail
             </h3>
-            <p className="text-[14px] text-gray-500 font-normal mb-10">
+            <p className="text-[14px] text-gray-400 font-normal mb-10">
               Fill out the form below and I'll respond promptly.
             </p>
 
@@ -77,7 +144,7 @@ export default function ContactSection() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Full Name"
                   required
-                  className="w-full bg-white border border-gray-200/90 rounded-2xl py-4 pl-12 pr-5 text-[14.5px] text-gray-800 placeholder-gray-600 focus:outline-none focus:border-gray-400/80 transition-colors shadow-2xs"
+                  className="w-full bg-white/[0.045] border border-white/[0.10] rounded-2xl py-4 pl-12 pr-5 text-[14.5px] text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-400/60 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 shadow-2xs"
                 />
               </div>
 
@@ -102,7 +169,7 @@ export default function ContactSection() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
                   required
-                  className="w-full bg-white border border-gray-200/90 rounded-2xl py-4 pl-12 pr-5 text-[14.5px] text-gray-800 placeholder-gray-600 focus:outline-none focus:border-gray-400/80 transition-colors shadow-2xs"
+                  className="w-full bg-white/[0.045] border border-white/[0.10] rounded-2xl py-4.5 pl-12 pr-5 text-[14.5px] text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-400/60 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 resize-none shadow-2xs"
                 />
               </div>
 
@@ -127,7 +194,7 @@ export default function ContactSection() {
                   placeholder="Your Message"
                   required
                   rows={5}
-                  className="w-full bg-white border border-gray-200/90 rounded-2xl py-4.5 pl-12 pr-5 text-[14.5px] text-gray-800 placeholder-gray-600 focus:outline-none focus:border-gray-400/80 transition-colors resize-none shadow-2xs"
+                  className="w-full bg-white/[0.045] border border-white/[0.10] rounded-2xl py-4.5 pl-12 pr-5 text-[14.5px] text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-400/60 focus:ring-4 focus:ring-cyan-400/10 transition-all duration-300 resize-none shadow-2xs"
                 />
               </div>
 
@@ -158,10 +225,49 @@ export default function ContactSection() {
               </button>
             </form>
           </div>
-        </div>
+        </motion.div>
 
         {/* RIGHT CARD: LET'S WORK TOGETHER (INCREASED SIZES) */}
-        <div className="bg-[#fcfcfc] border border-gray-200/80 rounded-[32px] p-10 md:p-12 flex flex-col justify-between text-left transition-all duration-500 ease-out hover:-translate-y-3 active:scale-[0.98] shadow-[0_2px_4px_rgba(0,0,0,0.01)] hover:shadow-[0_35px_70px_-20px_rgba(0,0,0,0.12),0_0_40px_-10px_rgba(0,0,0,0.06)]">
+        <motion.div
+          onMouseMove={handleCardMouseMove}
+          initial={{
+            opacity: 0,
+            x: 70,
+            y: 40,
+            filter: "blur(12px)",
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            y: 0,
+            filter: "blur(0px)",
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="group relative overflow-hidden bg-gradient-to-br from-white/[0.09] via-white/[0.045] to-transparent border border-white/[0.10] rounded-[32px] p-10 md:p-12 flex flex-col justify-between text-left backdrop-blur-2xl transition-all duration-500 ease-out hover:-translate-y-3 active:scale-[0.98] shadow-[0_30px_80px_-25px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.08)] hover:border-cyan-400/20 hover:shadow-[0_35px_90px_-25px_rgba(0,0,0,0.8),0_0_45px_-15px_rgba(34,211,238,0.75),inset_0_1px_0_rgba(255,255,255,0.12)]"
+        >
+          {/* Glossy Reflection */}
+          <div className="pointer-events-none absolute top-0 -left-[120%] h-full w-[55%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/[0.07] to-transparent opacity-0 group-hover:left-[150%] group-hover:opacity-100 transition-all duration-[1100ms] ease-out z-20" />
+          <div
+            className="pointer-events-none absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{
+              background:
+                "radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), rgba(34,211,238,0.12), transparent 65%)",
+            }}
+          />
+
+          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[32px]">
+            <div className="absolute -top-32 -left-32 w-[360px] h-[360px] rounded-full bg-cyan-400/[0.07] blur-[100px]" />
+            <div className="absolute -bottom-40 -right-32 w-[320px] h-[320px] rounded-full bg-violet-500/[0.06] blur-[110px]" />
+            <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          </div>
+
           <div>
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f3f3f3]/80 rounded-full text-[12px] font-medium text-gray-600 mb-8 border border-gray-200/20">
@@ -170,12 +276,12 @@ export default function ContactSection() {
             </div>
 
             {/* Massive Header Text */}
-            <h3 className="text-[28px] sm:text-[36px] md:text-[44px] font-bold text-gray-900 tracking-tight mb-5 leading-tight">
+            <h3 className="text-[28px] sm:text-[36px] md:text-[44px] font-bold text-white tracking-tight mb-5 leading-tight">
               Let's Work Together
             </h3>
 
             {/* Paragraph Text */}
-            <p className="text-[14.5px] md:text-[15.5px] text-gray-500 font-normal leading-relaxed mb-8">
+            <p className="text-[14.5px] md:text-[15.5px] text-gray-400 font-normal leading-relaxed mb-8">
               Actively learning and improving every day. Currently open to
               internships, freelance work, and collaboration opportunities.
               Let's build something great together ✈️
@@ -183,10 +289,10 @@ export default function ContactSection() {
 
             {/* Bigger Stats Counter */}
             <div className="flex flex-col mb-8">
-              <span className="text-[34px] sm:text-[42px] font-bold text-gray-900 leading-none">
+              <span className="text-[34px] sm:text-[42px] font-bold text-white leading-none">
                 11+
               </span>
-              <span className="text-[14px] font-semibold tracking-wider text-gray-500 mt-1.5">
+              <span className="text-[14px] font-semibold tracking-wider text-cyan-400/70 mt-1.5">
                 PROJECTS COMPLETED
               </span>
             </div>
@@ -200,7 +306,7 @@ export default function ContactSection() {
                 href="https://github.com/rahul-diw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full px-5 py-3 bg-white border border-gray-200/70 rounded-2xl flex items-center justify-between text-[14.5px] text-gray-800 font-semibold shadow-2xs hover:border-gray-300 hover:bg-gray-50/50 active:scale-[0.98] transition-all cursor-pointer no-underline"
+                className="w-full px-5 py-3 bg-white/[0.045] border border-white/[0.10] rounded-2xl flex items-center justify-between text-[14.5px] text-gray-200 font-semibold shadow-2xs hover:bg-cyan-500/[0.06] hover:border-cyan-400/30 active:scale-[0.98] transition-all cursor-pointer no-underline"
               >
                 <span>GitHub</span>
                 <svg
@@ -221,7 +327,7 @@ export default function ContactSection() {
               {/* LinkedIn Link Card */}
               <a
                 href="https://www.linkedin.com/in/rahul-diwakar-7420072b0/"
-                className="w-full px-5 py-3 bg-white border border-gray-200/70 rounded-2xl flex items-center justify-between text-[14.5px] text-gray-800 font-semibold shadow-2xs hover:border-gray-300 hover:bg-gray-50/50 active:scale-[0.98] transition-all cursor-pointer no-underline"
+                className="w-full px-5 py-3 bg-white/[0.045] border border-white/[0.10] rounded-2xl flex items-center justify-between text-[14.5px] text-gray-200 font-semibold shadow-2xs hover:bg-cyan-500/[0.06] hover:border-cyan-400/30 active:scale-[0.98] transition-all cursor-pointer no-underline"
               >
                 <span>LinkedIn</span>
                 <svg
@@ -247,8 +353,8 @@ export default function ContactSection() {
               📍 India · Global Mindset, Local Roots
             </span>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -1,191 +1,404 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { portfolioData } from "../data/portfolioData";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
-
+import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
+import { portfolioData } from "../data/portfolioData";
 
 export default function Navbar() {
+  const { personalInfo } = portfolioData;
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { personalInfo } = portfolioData;
-  
-  // Track karne ke liye ki abhi screen par kaun sa section active hai
-  const [activeSection, setActiveSection] = useState('home');
-  
-  // Indicator line ki dynamic positioning (Width aur Left offset) ke liye state
+  const [activeSection, setActiveSection] = useState("home");
   const [lineStyle, setLineStyle] = useState({ left: 0, width: 0 });
-  
-  // Saare nav links ke DOM element references ko store karne ke liye refs container
+
+  // New States
+  const [scrolled, setScrolled] = useState(false);
+  const [hovered, setHovered] = useState(null);
+
   const linksRef = useRef({});
 
   const navLinks = [
-    { label: "Home", href: "#home", id: "home" },
-    { label: "About", href: "#about", id: "about" },
-    { label: "Projects", href: "#projects", id: "projects" },
-    { label: "Contact", href: "#contact", id: "contact" },
+    { id: "home", label: "Home", href: "#home" },
+    { id: "about", label: "About", href: "#about" },
+    { id: "projects", label: "Projects", href: "#projects" },
+    { id: "contact", label: "Contact", href: "#contact" },
   ];
 
-  // 1. SCROLL TRACKING LOGIC (Intersection Observer)
+  /* -----------------------------
+        SCROLL STATE
+  ------------------------------*/
+
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-80px 0px -50% 0px', // Screen ke middle aur top edge ke beech trigger karega
-      threshold: 0, 
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
     };
 
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
+    handleScroll();
 
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    window.addEventListener("scroll", handleScroll);
+
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  /* -----------------------------
+      ACTIVE SECTION OBSERVER
+  ------------------------------*/
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-120px 0px -45% 0px",
+        threshold: 0,
+      }
+    );
 
     navLinks.forEach((link) => {
       const el = document.getElementById(link.id);
+
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
   }, []);
 
-  // 2. SLIDING LINE ANIMATION POSITIONING LOGIC
-  useEffect(() => {
-    // Jab bhi activeSection badlega, hum us link ka actual width aur left coordinate measure karenge
-    const activeLinkEl = linksRef.current[activeSection];
-    if (activeLinkEl) {
-      const { offsetLeft, offsetWidth } = activeLinkEl;
-      setLineStyle({
-        left: offsetLeft,
-        width: offsetWidth
-      });
-    }
-  }, [activeSection]);
+  /* -----------------------------
+      ACTIVE CAPSULE POSITION
+  ------------------------------*/
 
-  // 3. SMOOTH SCROLL CLICK HANDLER (Navbar height offset ke sath)
+  useEffect(() => {
+    const current =
+      linksRef.current[hovered || activeSection];
+
+    if (!current) return;
+
+    setLineStyle({
+      left: current.offsetLeft,
+      width: current.offsetWidth,
+    });
+  }, [activeSection, hovered]);
+
+  /* -----------------------------
+      SMOOTH SCROLL
+  ------------------------------*/
+
   const handleNavLinkClick = (e, id) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 70; // Navbar ke peeche heading na chupe isliye gap padding
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      
-      setActiveSection(id);
-    }
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    const offset = 70;
+
+    const bodyTop =
+      document.body.getBoundingClientRect().top;
+
+    const elementTop =
+      element.getBoundingClientRect().top;
+
+    const position =
+      elementTop - bodyTop - offset;
+
+    window.scrollTo({
+      top: position,
+      behavior: "smooth",
+    });
+
+    setActiveSection(id);
+
+    setMobileMenuOpen(false);
+  };
+
+  /* -----------------------------
+      ANIMATIONS
+  ------------------------------*/
+
+  const navAnimation = {
+    initial: {
+      opacity: 0,
+      y: -40,
+    },
+
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+      },
+    },
+  };
+
+  const drawerAnimation = {
+    hidden: {
+      opacity: 0,
+      y: -30,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.35,
+      },
+    },
+
+    exit: {
+      opacity: 0,
+      y: -25,
+      transition: {
+        duration: 0.25,
+      },
+    },
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-300/90 shadow-[0_4px_20px_rgba(0,0,0,0.05)] z-50 py-3 transition-all duration-300 font-jakarta">
-      <div className="max-w-[1500px] mx-auto flex items-center justify-between px-6 sm:px-8 md:px-10 lg:px-0 w-full">
-        
-        {/* LEFT SIDE: Logo / Name */}
-        <div className="flex-shrink-0">
-          <a
-            href="#home"
-            onClick={(e) => handleNavLinkClick(e, 'home')}
-            className="text-lg sm:text-xl font-bold tracking-tight text-gray-950 uppercase cursor-pointer"
-          >
-            {personalInfo.name}
-          </a>
-        </div>
+    <motion.nav
+      variants={navAnimation}
+      initial="initial"
+      animate="animate"
+      className={`fixed left-1/2 -translate-x-1/2 z-[100] transition-all duration-700
+      ${
+        scrolled
+          ? "top-4 w-[92%] max-w-[1380px]"
+          : "top-7 w-[96%] max-w-[1450px]"
+      }`}
+    >
+      {/* Glass Container */}
 
-        {/* CENTER SIDE: Nav Links with Real Smooth Sliding Line */}
-        <div className="hidden md:flex items-center gap-10 text-sm font-medium tracking-tight relative py-2">
-          
+      <div
+        className={`
+          relative
+          flex
+          items-center
+          justify-between
+          rounded-[26px]
+          border
+          transition-all
+          duration-700
+
+          ${
+            scrolled
+              ? "bg-black/45 backdrop-blur-3xl border-white/10 shadow-[0_25px_80px_rgba(0,0,0,.45)] px-8 py-3"
+              : "bg-black/20 backdrop-blur-2xl border-white/5 px-10 py-4"
+          }
+        `}
+      >
+        {/* LOGO */}
+
+        <button
+          onClick={(e) => handleNavLinkClick(e, "home")}
+          className="text-white font-semibold tracking-[0.15em] uppercase text-sm md:text-base transition-opacity hover:opacity-80"
+        >
+          {personalInfo.name}
+        </button>
+
+        {/* Desktop Navigation */}
+
+        <div className="hidden lg:flex relative items-center gap-12">
+                    {/* Active Glass Capsule */}
+          <motion.span
+            className="absolute h-11 rounded-full bg-white/10 border border-white/10 backdrop-blur-xl"
+            animate={{
+              left: lineStyle.left,
+              width: lineStyle.width,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 320,
+              damping: 28,
+            }}
+          />
+
           {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
+            const active = activeSection === link.id;
+
             return (
-              <a
+              <button
                 key={link.id}
-                href={link.href}
-                ref={(el) => (linksRef.current[link.id] = el)} // DOM Node reference calculate karne ke liye save kar rahe hain
+                ref={(el) => (linksRef.current[link.id] = el)}
+                onMouseEnter={() => setHovered(link.id)}
+                onMouseLeave={() => setHovered(null)}
                 onClick={(e) => handleNavLinkClick(e, link.id)}
-                className={`relative py-1 transition-colors duration-300 select-none ${
-                  isActive ? 'text-black font-semibold' : 'text-gray-400 hover:text-black'
+                className={`relative z-10 px-4 py-2 rounded-full transition-all duration-300 text-sm tracking-wide
+                ${
+                  active
+                    ? "text-white"
+                    : "text-white/65 hover:text-white"
                 }`}
               >
                 {link.label}
-              </a>
+              </button>
             );
           })}
-
-          {/* SINGLE SLIDING LINE: Yeh line poore navbar mein left-right smoothly slide karegi */}
-          <span
-            className="absolute bottom-0 h-[2px] bg-black transition-all duration-300 ease-in-out"
-            style={{
-              left: `${lineStyle.left}px`,
-              width: `${lineStyle.width}px`,
-            }}
-          />
         </div>
 
-        {/* RIGHT SIDE: GITHUB ICON */}
-      <div className="flex items-center gap-2">
-  
-  {/* GitHub Icon */}
-  <a
-    href={personalInfo.github}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-[14px] border border-transparent hover:border-gray-300 bg-transparent transition-all duration-300 group"
-  >
-   <FaGithub className="w-5 h-5 text-black transition-transform duration-300 group-hover:scale-110" />
-  </a>
+        {/* Right Side */}
 
-{/* Mobile Hamburger */}
-<button
-  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-  className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-300"
->
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M4 6h16M4 12h16M4 18h16"
-    />
-  </svg>
-</button>
+        <div className="flex items-center gap-3">
 
-</div>
+          {/* Github */}
 
+          <motion.a
+            href={personalInfo.github}
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{
+              scale: 1.08,
+              rotate: 8,
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            className="
+              hidden
+              lg:flex
+              items-center
+              justify-center
+              w-11
+              h-11
+              rounded-full
+              border
+              border-white/10
+              bg-white/5
+              backdrop-blur-xl
+              text-white
+              transition-all
+              duration-300
+              hover:bg-white/10
+              hover:border-white/20
+            "
+          >
+            <FaGithub size={19} />
+          </motion.a>
+
+          {/* Mobile Toggle */}
+
+          <button
+            onClick={() =>
+              setMobileMenuOpen(!mobileMenuOpen)
+            }
+            className="
+              lg:hidden
+              flex
+              items-center
+              justify-center
+              w-11
+              h-11
+              rounded-full
+              border
+              border-white/10
+              bg-white/5
+              text-white
+            "
+          >
+            {mobileMenuOpen ? (
+              <HiX size={22} />
+            ) : (
+              <HiOutlineMenuAlt3 size={22} />
+            )}
+          </button>
+
+        </div>
       </div>
 
-      {mobileMenuOpen && (
-  <div className="md:hidden border-t border-gray-200 bg-white/95 backdrop-blur-xl">
-    <div className="flex flex-col px-6 py-4">
+      {/* Mobile Drawer */}
 
-      {navLinks.map((link) => (
-        <a
-          key={link.id}
-          href={link.href}
-          onClick={(e) => {
-            handleNavLinkClick(e, link.id);
-            setMobileMenuOpen(false);
-          }}
-          className="py-3 text-gray-700 font-medium border-b border-gray-100 last:border-0"
-        >
-          {link.label}
-        </a>
-      ))}
+      <AnimatePresence>
 
-    </div>
-  </div>
-)}
-    </nav>
+        {mobileMenuOpen && (
+
+          <motion.div
+            variants={drawerAnimation}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="
+              lg:hidden
+              mt-4
+              rounded-[24px]
+              border
+              border-white/10
+              bg-black/50
+              backdrop-blur-3xl
+              shadow-[0_25px_60px_rgba(0,0,0,.45)]
+              overflow-hidden
+            "
+          >
+
+            <div className="flex flex-col py-3">
+
+              {navLinks.map((link) => {
+
+                const active =
+                  activeSection === link.id;
+
+                return (
+
+                  <button
+                    key={link.id}
+                    onClick={(e) =>
+                      handleNavLinkClick(e, link.id)
+                    }
+                    className={`
+                      px-6
+                      py-4
+                      text-left
+                      transition-all
+                      duration-300
+
+                      ${
+                        active
+                          ? "text-white bg-white/10"
+                          : "text-white/70 hover:bg-white/5 hover:text-white"
+                      }
+                    `}
+                  >
+                    {link.label}
+                  </button>
+
+                );
+              })}
+
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  mx-4
+                  mt-3
+                  rounded-xl
+                  border
+                  border-white/10
+                  bg-white/5
+                  py-3
+                  flex
+                  items-center
+                  justify-center
+                  gap-3
+                  text-white
+                "
+              >
+                <FaGithub />
+                GitHub
+              </a>
+
+            </div>
+
+          </motion.div>
+
+        )}
+
+      </AnimatePresence>
+
+    </motion.nav>
   );
 }

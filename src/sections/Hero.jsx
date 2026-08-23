@@ -2,371 +2,564 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { portfolioData } from "../data/portfolioData";
 
-// Pehle se chal rahe imports ke thik niche lagao:
-import PicReal from "../assets/Rahul-pic1.png"; // White background professional pic
-import PicAvatar from "../assets/Rahul-pic2.png"; // Cartoon/Vector look pic
+import PicReal from "../assets/Rahul-pic1.png";
+import PicAvatar from "../assets/Rahul-pic2.png";
 
 export default function Hero() {
   const { personalInfo } = portfolioData;
+
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [autoFlipping, setAutoFlipping] = useState(true);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-
-    window.addEventListener("resize", checkMobile);
-
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
 
   useEffect(() => {
     setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
 
   useEffect(() => {
-  const flip1 = setTimeout(() => {
-    setIsHovered(true);
-  }, 1500);
+    const flip1 = setTimeout(() => {
+      setIsHovered(true);
+    }, 1500);
 
-  const flip2 = setTimeout(() => {
-    setIsHovered(false);
-  }, 2500);
+    const flip2 = setTimeout(() => {
+      setIsHovered(false);
+    }, 2600);
 
-  const stopAuto = setTimeout(() => {
-    setAutoFlipping(false);
-  }, 2600);
+    const stop = setTimeout(() => {
+      setAutoFlipping(false);
+    }, 2800);
 
-  return () => {
-    clearTimeout(flip1);
-    clearTimeout(flip2);
-    clearTimeout(stopAuto);
-  };
-}, []);
+    return () => {
+      clearTimeout(flip1);
+      clearTimeout(flip2);
+      clearTimeout(stop);
+    };
+  }, []);
 
   return (
-    // Max width increased to 1440px and vertical padding increased to pt-40 pb-20 for a grander size feel
     <section
       id="home"
-      className="relative min-h-screen md:min-h-[115vh] pt-28 md:pt-50 pb-20 flex flex-col justify-between items-center px-5 md:px-12 max-w-[1440px] mx-auto overflow-hidden"
+      className="relative min-h-screen overflow-hidden px-6 md:px-14 pt-36 md:pt-44 pb-24"
     >
-      {/* Grid split adjusted to 6 & 6 for maximum horizontal span and layout size expansion */}
-      <div className="w-full min-w-0 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-center my-auto">
-        {/* Left Content Side */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="order-2 md:order-1 md:col-span-6 space-y-7 text-center md:text-left md:-translate-y-12"
-        >
-          {/* 1. WELCOME BADGE - Dark Gray Slide from Left on Hover */}
+      {/* Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Main Radial Glow */}
+        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[1200px] h-[1200px] rounded-full bg-white/[0.04] blur-[180px]" />
 
-          <div className="flex justify-center md:justify-start">
-            <div className="group relative -top-8 inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-500 rounded-full text-xs font-semibold tracking-wide border border-gray-200/60 shadow-sm cursor-pointer overflow-hidden transition-colors duration-300 hover:text-white relative -top-8">
-              {/* Sliding Background Cover */}
-              <span className="absolute inset-0 w-full h-full bg-[#333333] scale-x-0 origin-left transition-normal duration-500 ease-out group-hover:scale-x-100 group-active:scale-x-100 z-0"></span>
-              {/* Content stays on top */}
-              <span className="relative z-20 h-full items-baseline gap-2">
-                ✨ Welcome to my portfolio
+        {/* Left Glow */}
+        <div className="absolute top-40 -left-60 w-[700px] h-[700px] rounded-full bg-violet-500/[0.05] blur-[180px]" />
+
+        {/* Right Glow */}
+        <div className="absolute bottom-20 -right-60 w-[700px] h-[700px] rounded-full bg-cyan-400/[0.04] blur-[180px]" />
+
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(0,0,0,.65)_100%)]" />
+
+        {/* Noise */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "url('https://grainy-gradients.vercel.app/noise.svg')",
+          }}
+        />
+      </div>
+      {/* Background Glow */}
+
+      <div className="absolute -top-60 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-white/5 blur-[180px]" />
+
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-white/5 blur-[160px]" />
+
+      <div className="relative max-w-[1450px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          {/* LEFT */}
+
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1,
+            }}
+            className="relative z-10"
+          >
+            {/* Badge */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.2,
+              }}
+              className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-gray-300 text-xs tracking-[0.3em] uppercase mb-10"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              Available For Work
+            </motion.div>
+
+            {/* Main Heading */}
+
+            <motion.h1
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.35,
+                duration: 0.9,
+              }}
+              className="leading-[0.9]"
+            >
+              <span className="block bg-gradient-to-r from-white via-gray-300 to-gray-600 bg-clip-text text-transparent font-black uppercase text-[58px] sm:text-[76px] lg:text-[96px] tracking-[-0.05em]">
+                FULL STACK
               </span>
-            </div>
-          </div>
 
-          {/* Name Panel - Colors swapped perfectly */}
-          <div className="space-y-2">
-            {/* "Hi, I'm" now gets the bold dark look */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-800">
-              Hi, I'm
-            </h1>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500 font-black uppercase text-[58px] sm:text-[76px] lg:text-[96px] tracking-[-0.05em]">
+                DEVELOPER
+              </span>
+            </motion.h1>
 
-            {/* "Rahul Diwakar" now gets the stylish soft gray look */}
-            <h1 className="text-5xl sm:text-6xl md:text-6xl font-bold tracking-tight text-gray-600 relative inline-block group cursor-pointer pb-1">
-              {personalInfo.name}
+            {/* Name */}
 
-              {/* Bottom underline accent color adjusted to match the gray look smoothly */}
-              <span className="absolute bottom-0 left-0 w-0 h-[3px] bg-gray-700 transition-all duration-500 ease-out group-hover:w-full"></span>
-            </h1>
-          </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.65 }}
+              className="mt-7"
+            >
+              <p className="uppercase tracking-[0.45em] text-gray-500 text-xs">
+                Rahul Diwakar
+              </p>
+            </motion.div>
 
-          {/* Subheading Tagline */}
-          <div className="relative py-1 inline-block">
-            <p className="text-base md:text-xl font-normal text-gray-500 tracking-tight md:border-l-4 border-gray-900 md:pl-5 leading-snug">
-              Building scalable web apps & exploring full-stack development
-            </p>
-          </div>
+            {/* Description */}
 
-          {/* Summary Text */}
-          <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-xl text-justify font-medium">
-            I'm an MCA graduate passionate about building modern, scalable web
-            applications. I enjoy converting ideas into polished products with
-            clean interfaces and seamless user experiences.
-          </p>
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="mt-8 max-w-xl text-[17px] leading-8 text-gray-400"
+            >
+              I build immersive full-stack applications using React, Next.js,
+              Node.js and MongoDB while combining clean engineering with premium
+              user experiences and modern interactive interfaces.
+            </motion.p>
 
-          {/* BUTTONS WITH SLIDING HOVER EFFECTS */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 pt-3">
-            {/* 2. VIEW MY WORK BUTTON - White Slide from Left on Hover (Opposite Effect) */}
+            {/* CTA */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+              className="flex flex-wrap gap-5 mt-12"
+            >
             <a
               href="#projects"
-              className="group relative inline-flex items-center gap-3 bg-[#333333] text-white px-7 py-3.5 rounded-full font-medium overflow-hidden border border-transparent hover:border-gray-300 transition-colors duration-300 hover:text-black text-sm tracking-wide shadow-sm active:scale-95"
+              className="group relative overflow-hidden rounded-full bg-white text-black px-8 py-4 font-semibold tracking-wide
+              shadow-[0_20px_60px_rgba(255,255,255,.15)]
+              hover:shadow-[0_20px_80px_rgba(255,255,255,.25)]
+              transition-all
+              duration-500"
             >
-              {/* Sliding White Background */}
-              <span className="absolute inset-0 w-full h-full bg-white scale-x-0 origin-left transition-transform duration-600 ease-out group-hover:scale-x-100 group-active:scale-x-100 z-0"></span>
+                <span className="relative z-20">View Projects →</span>
 
-              {/* Real Text Content on top layer */}
-              <span className="w-full sm:w-auto relative z-10 flex items-center gap-3">
-                View My Work
-                <svg
-                  className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </span>
-            </a>
+                <span className="absolute inset-0 bg-gradient-to-r from-white to-gray-300 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              </a>
 
-            {/* 3. LET'S CONNECT BUTTON - Dark Gray Slide from Left on Hover */}
-            <a
-              href="#contact"
-              className="group relative inline-flex items-center gap-3 border border-gray-300 bg-white text-gray-700 px-7 py-3.5 rounded-full font-medium overflow-hidden transition-colors duration-300 hover:text-white text-sm tracking-wide shadow-sm active:scale-95"
-            >
-              {/* Sliding Dark Gray Background */}
-              <span className="absolute inset-0 w-full h-full bg-[#333333] scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 group-active:scale-x-100 z-0"></span>
-
-              {/* Real Text Content on top layer */}
-              <span className="w-full sm:w-auto relative z-10 flex items-center gap-3">
-                Let's Connect
-                <svg
-                  className="w-5 h-5 text-gray-900 group-hover:text-white transition-colors duration-300"
-                  fill="none"
-                  viewBox="0 0 20 25"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </span>
-            </a>
-          </div>
-
-          {/* Social Links Block in Hero Section */}
-          <div className="flex justify-center md:justify-start items-center gap-4 mt-6">
-            {/* 1. GITHUB ICON - Circle border reveal on hover */}
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-transparent hover:border-gray-200 bg-transparent text-gray-700 hover:text-black transition-all duration-300 ease-out hover:scale-110 active:scale-95"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-              </svg>
-            </a>
-
-            {/* 2. LINKEDIN ICON - Circle border reveal on hover */}
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-transparent hover:border-gray-200 bg-transparent text-gray-700 hover:text-black transition-all duration-300 ease-out hover:scale-110 active:scale-95"
-            >
-              <svg
-                className="w-[22px] h-[22px]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
+              <a
+                href="#contact"
+                className="rounded-full border border-white/15 bg-white/5 backdrop-blur-xl px-8 py-4 text-white hover:bg-white hover:text-black transition-all duration-500"
               >
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
-          </div>
-        </motion.div>
+                Let's Connect
+              </a>
+            </motion.div>
 
-        {/* Right Content Side - Balanced col-span-6 for scaling up the terminal block and container alignment */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="order-1 md:order-2 md:col-span-6 flex flex-col items-center justify-center gap-8 md:gap-14 relative w-full"
-        >
-          {/* 3D PROFILE PICTURE FLIP CONTAINER - Size Boosted to w-80 h-80 */}
-          <div className="flex justify-center items-center mb-8 md:mb-0">
-            {/* Perspective Wrapper - Width and Height bumped to w-80 h-80 */}
-            <div
-              className="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 group/card cursor-pointer"
-              style={{ perspective: "1000px" }}
+            {/* Stats */}
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="flex flex-wrap gap-10 mt-16"
+            >
+              <div>
+                <h3 className="text-4xl font-bold text-white">11+</h3>
+
+                <p className="text-gray-500 text-sm mt-2">Projects</p>
+              </div>
+
+              <div>
+                <h3 className="text-4xl font-bold text-white">240+</h3>
+
+                <p className="text-gray-500 text-sm mt-2">DSA Problems</p>
+              </div>
+
+              <div>
+                <h3 className="text-4xl font-bold text-white">MCA</h3>
+
+                <p className="text-gray-500 text-sm mt-2">Post Graduate</p>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* RIGHT SECTION CONTINUES IN PART 2 */}
+          {/* ================= RIGHT SIDE ================= */}
+
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0.4,
+            }}
+            className="relative flex flex-col items-center justify-center"
+          >
+            {/* Background Glow */}
+
+            <div className="absolute w-[620px] h-[620px] rounded-full bg-white/5 blur-[170px]" />
+
+            {/* Floating Ring */}
+
+            <motion.div
+              animate={{
+                rotate: 360,
+              }}
+              transition={{
+                duration: 35,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute w-[360px] h-[360px] rounded-full border border-white/10"
+            />
+
+            <motion.div
+              animate={{
+                rotate: -360,
+              }}
+              transition={{
+                duration: 28,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute w-[430px] h-[430px] rounded-full border border-white/[0.04]"
+            />
+
+            {/* Profile Card */}
+
+            <motion.div
+              animate={{
+                y: [0, -18, 0],
+                rotate: [0, 1.5, 0, -1.5, 0],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="relative"
             >
               <div
-                onClick={() => {
-                  if (isTouchDevice) {
-                    setIsHovered(!isHovered);
-                  }
-                }}
-                className={`relative w-full h-full transition-transform duration-700 ${
-                  !isTouchDevice
-                    ? "group-hover/card:[transform:rotateY(180deg)]"
-                    : ""
-                }`}
+                className="relative w-[320px] h-[320px] md:w-[390px] md:h-[390px]"
                 style={{
-                 transform:
-                    autoFlipping || isTouchDevice
-                      ? isHovered
-                        ? "rotateY(180deg)"
-                        : "rotateY(0deg)"
-                     : undefined,
-                  transformStyle: "preserve-3d",
+                  perspective: "1500px",
                 }}
               >
-
-                <p className="text-xs text-gray-400 mt-3 text-center">
-                   {isTouchDevice ? "↻ Tap to Flip" : "↻ Hover to Flip"}
-                  </p>
-                {/* FRONT SIDE - Real Pic */}
                 <div
-                  className="absolute inset-0 w-full h-full rounded-full shadow-lg bg-transparent overflow-hidden"
-                  style={{ backfaceVisibility: "hidden" }}
-                >
-                  <img
-                    src={PicReal}
-                    alt="Rahul Diwakar Real"
-                    className="w-full h-full object-cover object-center scale-[1.08]"
-                  />
-                </div>
-
-                {/* BACK SIDE - Avatar Pic */}
-                <div
-                  className="absolute inset-0 w-full h-full rounded-full shadow-lg bg-transparent overflow-hidden"
+                  onClick={() => {
+                    if (isTouchDevice) {
+                      setIsHovered(!isHovered);
+                    }
+                  }}
+                  className={`relative w-full h-full transition-transform duration-700 ${
+                    !isTouchDevice
+                      ? "group-hover:[transform:rotateY(180deg)]"
+                      : ""
+                  }`}
                   style={{
-                    backfaceVisibility: "hidden",
-                    transform: "rotateY(180deg)",
+                    transform:
+                      autoFlipping || isTouchDevice
+                        ? isHovered
+                          ? "rotateY(180deg)"
+                          : "rotateY(0deg)"
+                        : undefined,
+                    transformStyle: "preserve-3d",
                   }}
                 >
-                  <img
-                    src={PicAvatar}
-                    alt="Rahul Diwakar Avatar"
-                    className="w-full h-full object-cover object-center scale-[1.08]"
-                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-[420px] h-[420px] rounded-full bg-white/5 blur-[120px]" />
+                  </div>
+                  {/* Glass Border */}
+
+                  <div className="absolute -inset-4 rounded-full border border-white/10 backdrop-blur-xl bg-white/[0.03]" />
+
+                  {/* Glow */}
+
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 via-transparent to-white/5 blur-2xl scale-110" />
+
+                  {/* FRONT */}
+
+                  <div
+                    className="absolute inset-0 rounded-full overflow-hidden border border-white/10 shadow-[0_25px_80px_rgba(0,0,0,.45)]"
+                    style={{
+                      backfaceVisibility: "hidden",
+                    }}
+                  >
+                    <img
+                      src={PicReal}
+                      alt="Rahul"
+                      className="w-full h-full object-cover scale-105"
+                    />
+                  </div>
+
+                  {/* BACK */}
+
+                  <div
+                    className="absolute inset-0 rounded-full overflow-hidden border border-white/10 shadow-[0_25px_80px_rgba(0,0,0,.45)]"
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transform: "rotateY(180deg)",
+                    }}
+                  >
+                    <img
+                      src={PicAvatar}
+                      alt="Rahul Avatar"
+                      className="w-full h-full object-cover scale-105"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* CODE TERMINAL BLOCK - Max stretched to fill its 6-column boundary beautifully */}
-          <div className="w-full max-w-full md:max-w-2xl bg-[#FBFBFB] text-[#333333] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.04)] overflow-hidden font-mono text-[11px] sm:text-[13px] md:text-[14px] border border-gray-200/60 transform hover:-translate-y-1 active:scale-[0.98] transition-all duration-300">
-            {/* Top Window Bar */}
-            <div className="bg-[#F3F3F3] px-6 py-4 flex items-center gap-2 border-b border-gray-200/80">
-              <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-              <span className="text-[13px] font-normal text-gray-600 font-mono ml-2 tracking-wide">
+              {/* Flip Hint */}
+
+              <motion.div
+                animate={{
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                }}
+                className="mt-8 text-center text-xs uppercase tracking-[0.35em] text-gray-500"
+              >
+                {isTouchDevice ? "Tap To Flip" : "Hover To Flip"}
+              </motion.div>
+            </motion.div>
+
+            {/* Floating Glass Card */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 1.1,
+              }}
+              whileHover={{
+                y: -8,
+              }}
+              className="mt-14 w-full max-w-md rounded-[30px] border border-white/10 bg-white/[0.04] backdrop-blur-2xl p-7"
+            >
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.35em] text-gray-500">
+                    Current Focus
+                  </p>
+
+                  <h3 className="mt-3 text-white text-xl font-semibold">
+                    Full Stack Development
+                  </h3>
+                </div>
+
+                <div className="w-4 h-4 rounded-full bg-emerald-400 animate-pulse" />
+              </div>
+
+              <div className="mt-7 space-y-5">
+                <div>
+                  <div className="flex justify-between text-sm text-gray-400 mb-2">
+                    <span>React / Next.js</span>
+
+                    <span>95%</span>
+                  </div>
+
+                  <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "95%" }}
+                      transition={{ duration: 1.5 }}
+                      className="h-full rounded-full bg-white"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-sm text-gray-400 mb-2">
+                    <span>Node / MongoDB</span>
+
+                    <span>90%</span>
+                  </div>
+
+                  <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "90%" }}
+                      transition={{
+                        duration: 1.7,
+                      }}
+                      className="h-full rounded-full bg-gray-300"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* PART 3 se Developer Terminal shuru hoga */}
+        {/* ================= PREMIUM DEVELOPER TERMINAL ================= */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 70 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.9,
+            delay: 1.3,
+          }}
+          whileHover={{
+            y: -8,
+          }}
+          className="mt-24"
+        >
+          <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-[#0B0B0C]/80 backdrop-blur-3xl shadow-[0_30px_90px_rgba(0,0,0,.45)]">
+            {/* Glow */}
+
+            <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-white/5 blur-[120px]" />
+
+            {/* Header */}
+
+            <div className="relative flex items-center justify-between px-8 py-5 border-b border-white/10">
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full bg-red-500" />
+
+                <span className="w-3 h-3 rounded-full bg-yellow-400" />
+
+                <span className="w-3 h-3 rounded-full bg-emerald-400" />
+              </div>
+
+              <div className="text-gray-500 text-sm tracking-[0.25em] uppercase">
                 developer.ts
-              </span>
+              </div>
             </div>
 
-            {/* Code Body */}
-            <div className="p-4 sm:p-6 md:p-8 whitespace-pre-wrap break-words overflow-x-auto text-left leading-relaxed select-none bg-[#FAFAFA]">
-              <code className="block">
-                <span className="text-blue-600 font-bold">const</span>{" "}
-                <span className="text-purple-600">developer</span> = &#123;
-                <br />
-                &nbsp;&nbsp;<span className="text-teal-600">title</span>:{" "}
-                <span className="text-amber-600">"{personalInfo.name}"</span>,
-                <br />
-                &nbsp;&nbsp;<span className="text-teal-600">role</span>:{" "}
-                <span className="text-amber-600">"Full-Stack Developer"</span>,
-                <br />
-                &nbsp;&nbsp;<span className="text-teal-600">Degree</span>:{" "}
-                <span className="text-amber-600">"MCA"</span>,
-                <br />
-                &nbsp;&nbsp;<span className="text-teal-600">
-                  experience
-                </span>:{" "}
-                <span className="text-amber-600">
-                  "Real-world Projects (Individual)"
-                </span>
-                ,
-                <br />
-                &nbsp;&nbsp;<span className="text-teal-600">
-                  projects
-                </span>: <span className="text-amber-600">"11+"</span>,
-                <br />
-                &nbsp;&nbsp;<span className="text-teal-600">skills</span>: [
-                <span className="text-amber-600">"React.js"</span>,{" "}
-                <span className="text-amber-600">"Next.js"</span>,{" "}
-                <span className="text-amber-600">"Node.js"</span>,{" "}
-                <span className="text-amber-600">"MongoDB"</span>,{" "}
-                <span className="text-amber-600">"MySQL"</span>, <br />
-                <span className="text-amber-600">"Git"</span>,{" "}
-                <span className="text-amber-600">"GitHub"</span>],
-                <br />
-                &nbsp;&nbsp;<span className="text-teal-600">
-                  dsaProblems
-                </span>: <span className="text-amber-600">"240+ Solved"</span>,
-                <br />
-                &nbsp;&nbsp;<span className="text-teal-600">passion</span>:{" "}
-                <span className="text-amber-600">
-                  "Building scalable Full stack Projects"
-                </span>
-                <br />
-                &#125;;
-              </code>
+            {/* Terminal */}
+
+            <div className="relative p-8 md:p-10 overflow-x-auto font-mono text-[14px] leading-9">
+              <div className="text-gray-500">$ npm run portfolio</div>
+              <div className="mt-5 text-emerald-400">
+                ✔ Portfolio Started Successfully
+              </div>
+              <br />
+              <span className="text-purple-400">const</span>{" "}
+              <span className="text-blue-400">developer</span>{" "}
+              <span className="text-white">=</span>{" "}
+              <span className="text-white">{"{"}</span>
+              <br />
+              <span className="ml-8 text-cyan-300">name</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-amber-300">"{personalInfo.name}"</span>
+              ,
+              <br />
+              <span className="ml-8 text-cyan-300">role</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-amber-300">"Full Stack Developer"</span>
+              ,
+              <br />
+              <span className="ml-8 text-cyan-300">education</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-amber-300">
+                "Master of Computer Applications"
+              </span>
+              ,
+              <br />
+              <span className="ml-8 text-cyan-300">experience</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-amber-300">"Real World Projects"</span>
+              ,
+              <br />
+              <span className="ml-8 text-cyan-300">projects</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-amber-300">"11+"</span>
+              ,
+              <br />
+              <span className="ml-8 text-cyan-300">dsaSolved</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-amber-300">"240+"</span>
+              ,
+              <br />
+              <span className="ml-8 text-cyan-300">tech</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-white">[</span>
+              <br />
+              <span className="ml-12 text-amber-300">"React",</span>
+              <br />
+              <span className="ml-12 text-amber-300">"Next.js",</span>
+              <br />
+              <span className="ml-12 text-amber-300">"Node.js",</span>
+              <br />
+              <span className="ml-12 text-amber-300">"Express",</span>
+              <br />
+              <span className="ml-12 text-amber-300">"MongoDB",</span>
+              <br />
+              <span className="ml-12 text-amber-300">"MySQL",</span>
+              <br />
+              <span className="ml-12 text-amber-300">"Tailwind CSS"</span>
+              <br />
+              <span className="ml-8 text-white">],</span>
+              <br />
+              <span className="ml-8 text-cyan-300">currentlyBuilding</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-amber-300">"Immersive 3D Portfolio"</span>
+              ,
+              <br />
+              <span className="ml-8 text-cyan-300">status</span>
+              <span className="text-white">:</span>{" "}
+              <span className="text-emerald-400">
+                "Available for Opportunities"
+              </span>
+              <br />
+              <span className="text-white">{"}"}</span>
+              <br />
+              <br />
+              <div className="flex items-center gap-2 text-emerald-400">
+                <span>$</span>
+
+                <span className="animate-pulse">█</span>
+              </div>
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Unchanged original arrow down indicator */}
+      {/* ================= SCROLL INDICATOR ================= */}
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
-        className="w-full flex justify-center pt-6 mt-10 md:mt-20"
+        transition={{
+          delay: 2,
+        }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <a
-          href="#about"
-          className="flex flex-col items-center gap-2 text-xs text-gray-400 hover:text-black transition-colors font-medium tracking-widest uppercase cursor-pointer group"
-        >
-          {/* <span className="group-hover:text-black transition-colors">Scroll Down</span> */}
-          <div className="relative w-6 h-8 flex flex-col items-center overflow-visible">
-            <svg
-              className="absolute top-0 w-6 h-6 text-gray-400 group-hover:text-black transition-colors animate-line-slide"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.5}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12" />
-            </svg>
-            <svg
-              className="absolute bottom-0 w-5 h-5 text-gray-400 group-hover:text-black transition-colors animate-bow-pulse"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.5}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 13l-7 7-7-7"
-              />
-            </svg>
-          </div>
+        <a href="#about" className="flex flex-col items-center gap-4 group">
+          <span className="text-[10px] uppercase tracking-[0.45em] text-gray-500">
+            Scroll
+          </span>
+
+          <motion.div
+            animate={{
+              y: [0, 12, 0],
+            }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+            }}
+            className="w-[2px] h-14 bg-gradient-to-b from-white to-transparent"
+          />
         </a>
       </motion.div>
     </section>

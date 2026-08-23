@@ -1,3 +1,4 @@
+/* src/index.css */
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
@@ -11,14 +12,39 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ====== DARK THEME ====== */
 body {
-  background-color: #fcfcfc;
-  color: #1a1a1a;
+  background-color: #0a0a0a;  /* Pure Black Background */
+  color: #e5e5e5;            /* Light Gray Text */
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
 
-/* Moving Arrow Down Animation */
+/* ====== SCROLLBAR STYLING (Dark) ====== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+/* ====== SELECTION COLOR ====== */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: #ffffff;
+}
+
+/* ====== Moving Arrow Down Animation ====== */
 @keyframes bounceDown {
   0%, 100% {
     transform: translateY(0);
@@ -32,9 +58,7 @@ body {
   animation: bounceDown 2s infinite ease-in-out;
 }
 
-/* Purani file ke neeche bas ye copy-paste kar lo */
-
-/* Vertical Line ke slide aur stretch hone ki animation */
+/* ====== Vertical Line Animation ====== */
 @keyframes advancedLineSlide {
   0% {
     transform: translateY(-8px) scaleY(0.3);
@@ -54,7 +78,6 @@ body {
   }
 }
 
-/* Outer Bow (Tip) ke halke se move hone ki animation */
 @keyframes advancedBowPulse {
   0%, 100% {
     transform: translateY(0);
@@ -73,4 +96,76 @@ body {
 
 .animate-bow-pulse {
   animation: advancedBowPulse 1.8s infinite ease-in-out;
+}
+
+/* ====== Terminal Glow Effect ====== */
+@keyframes terminalGlow {
+  0% {
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.05);
+  }
+  50% {
+    box-shadow: 0 25px 55px rgba(139, 92, 246, 0.15);
+  }
+  100% {
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.05);
+  }
+}
+
+.terminal-glow {
+  animation: terminalGlow 4s ease-in-out infinite;
+}
+
+/* ====== GLOW TEXT UTILITY ====== */
+.glow-text {
+  text-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+}
+
+/* ====== CARDS DARK THEME ====== */
+.dark-card {
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dark-card:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 60px -10px rgba(139, 92, 246, 0.1);
+}
+
+/* ====== SECTION DIVIDER ====== */
+.section-divider {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ====== INPUT FIELDS DARK ====== */
+.dark-input {
+  background: rgba(18, 18, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e5e5e5;
+}
+
+.dark-input:focus {
+  border-color: rgba(139, 92, 246, 0.4);
+  outline: none;
+  box-shadow: 0 0 30px -10px rgba(139, 92, 246, 0.1);
+}
+
+.dark-input::placeholder {
+  color: #4a4a4a;
+}
+
+@keyframes shine {
+
+    0%{
+        transform:translateX(-250%);
+    }
+
+    100%{
+        transform:translateX(600%);
+    }
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+  perspective: 2200px;
 }
