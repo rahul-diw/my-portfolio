@@ -1,48 +1,36 @@
-<h1 align="center">🌐 Personal Developer Portfolio</h1>
+# Developer Portfolio Website
 
-<p align="center">
-  <b>A modern, high-performance developer portfolio built with Next.js, React, TypeScript, and Tailwind CSS.</b>
-</p>
+A high-performance personal portfolio platform built to demonstrate technical projects, software engineering architecture, and full-stack development capabilities.
 
-<p align="center">
-  <a href="https://my-portfolio-drab-iota-18.vercel.app/">
-    <img src="https://img.shields.io/badge/Live_Demo-Vercel-2563EB?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
-  </a>
-  <img src="https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
-  <img src="https://img.shields.io/badge/TypeScript-Ready-blue?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-</p>
+[Live Demonstration](https://my-portfolio-drab-iota-18.vercel.app/) | [GitHub Repository](https://github.com/rahul-diw/my-portfolio)
 
 ---
 
-## 📌 Overview
+## Overview
 
-This personal portfolio website showcases my technical projects, software engineering skills, and professional journey as a Full-Stack Developer. It features a responsive design, sleek UI/UX components, dynamic project filtering, dark mode aesthetics, and optimized web performance.
-
-Designed and developed to present technical expertise to recruiters, open-source collaborators, and clients effectively.
+This repository contains the codebase for my personal developer portfolio. Built with Next.js, React, and Tailwind CSS, the platform focuses on optimized page loads, clean UI component abstraction, dynamic project rendering, and responsive design patterns across all viewports.
 
 ---
 
-## 🎯 Core Objectives
+## Core Objectives
 
-- ⚡ **Lightning Fast Performance:** Server-Side Rendering (SSR) & Static Site Generation (SSG) with Next.js.
-- 📱 **Fully Responsive:** Optimized for Mobile, Tablet, and Desktop screen viewports.
-- 🎨 **Modern Design:** Clean typography, glassmorphism UI cards, and smooth CSS animations.
-- 📂 **Project Showcase:** Detailed cards featuring project live links, GitHub repos, and tech tags.
-- 📬 **Interactive Contact Form:** Instant messaging integration to reach out directly.
+- **Performance Optimization:** Leverages Next.js Server-Side Rendering (SSR) and asset compression for fast page load metrics.
+- **Responsive Layout:** Responsive layout grid engineered for desktop, tablet, and mobile browsers.
+- **Component Architecture:** Modular React components ensuring scalable code maintainability and reusability.
+- **SEO & Metadata:** Structured OpenGraph metadata and search engine optimization setups.
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```text
-[ Client Browser ]
+[ Client Request ]
        │
        ▼
 [ Next.js Framework (App Router) ]
- ├── UI Components (React + Tailwind CSS)
- ├── Asset Management (Static / Images / SVGs)
- └── Routing & Metadata Optimization (SEO)
+ ├── UI Layer (React + Tailwind CSS)
+ ├── Static Asset Pipeline
+ └── Routing & Metadata Management
        │
        ▼
-[ Deployed Platform: Vercel CDN ]
+[ Edge Deployment: Vercel CDN ]
