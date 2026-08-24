@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useEngine from "./EngineStore";
@@ -10,49 +10,99 @@ export default function ScrollController() {
   const setScrollProgress = useEngine((s) => s.setScrollProgress);
   const setSectionProgress = useEngine((s) => s.setSectionProgress);
 
+  const progressFrame = useRef(null);
+  const sectionFrame = useRef(null);
+
+  const latestProgress = useRef(0);
+  const latestSectionProgress = useRef(0);
+
   useEffect(() => {
     const sections = ["hero", "about", "projects", "contact"];
 
+    // -----------------------------------------
     // Whole page progress
-    ScrollTrigger.create({
+    // -----------------------------------------
+
+    const pageTrigger = ScrollTrigger.create({
       trigger: document.body,
       start: "top top",
       end: "bottom bottom",
 
       onUpdate(self) {
-        setScrollProgress(self.progress);
+        latestProgress.current = self.progress;
+
+        // Prevent multiple store updates inside
+        // the same browser frame.
+        if (progressFrame.current !== null) return;
+
+        progressFrame.current = requestAnimationFrame(() => {
+          setScrollProgress(latestProgress.current);
+          progressFrame.current = null;
+        });
       },
     });
 
-    // Individual sections
-    const triggers = sections.map((id) => {
-      const element = document.getElementById(id);
+    // -----------------------------------------
+    // Individual section progress
+    // -----------------------------------------
 
-      if (!element) return null;
+    const triggers = sections
+      .map((id) => {
+        const element = document.getElementById(id);
 
-      return ScrollTrigger.create({
-        trigger: element,
-        start: "top center",
-        end: "bottom center",
+        if (!element) return null;
 
-        onUpdate(self) {
-          setSectionProgress(self.progress);
-        },
+        return ScrollTrigger.create({
+          trigger: element,
+          start: "top center",
+          end: "bottom center",
 
-        onEnter() {
-          setSection(id);
-        },
+          onUpdate(self) {
+            latestSectionProgress.current = self.progress;
 
-        onEnterBack() {
-          setSection(id);
-        },
-      });
-    });
+            // Prevent excessive Zustand updates
+            // while scrolling.
+            if (sectionFrame.current !== null) return;
+
+            sectionFrame.current = requestAnimationFrame(() => {
+              setSectionProgress(latestSectionProgress.current);
+              sectionFrame.current = null;
+            });
+          },
+
+          onEnter() {
+            setSection(id);
+          },
+
+          onEnterBack() {
+            setSection(id);
+          },
+        });
+      })
+      .filter(Boolean);
+
+    // -----------------------------------------
+    // Cleanup
+    // -----------------------------------------
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      pageTrigger.kill();
+
+      triggers.forEach((trigger) => {
+        trigger.kill();
+      });
+
+      if (progressFrame.current !== null) {
+        cancelAnimationFrame(progressFrame.current);
+        progressFrame.current = null;
+      }
+
+      if (sectionFrame.current !== null) {
+        cancelAnimationFrame(sectionFrame.current);
+        sectionFrame.current = null;
+      }
     };
-  }, []);
+  }, [setSection, setScrollProgress, setSectionProgress]);
 
   return null;
 }
