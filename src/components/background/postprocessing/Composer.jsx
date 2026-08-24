@@ -7,10 +7,10 @@ import {
 
 export default function Composer() {
   return (
-    <EffectComposer multisampling={2}>
+    <EffectComposer multisampling={0}>
       <Bloom
-        intensity={0.22}
-        luminanceThreshold={0.45}
+        intensity={0.16}
+        luminanceThreshold={0.55}
       />
 
       {/* <Noise opacity={0.015} /> */}
